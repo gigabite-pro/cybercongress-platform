@@ -1,0 +1,582 @@
+@font-face {
+    font-family: 'Geomanist-Book';
+    src: URL('/fonts/Geomanist-Book.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Geomanist-Medium';
+    src: URL('/fonts/Geomanist-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ShameimaruSans_copy';
+    src: URL('/fonts/ShameimaruSans_copy.ttf') format('truetype');
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 8px !important;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  
+  .on-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent !important;
+  }
+  
+  .on-scrollbar::-webkit-scrollbar {
+    width: 8px !important;
+    background-color: transparent;
+  }
+  
+  .on-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 50px;
+  }
+
+
+.navbar{
+    display: none;
+}
+
+.left-side{
+    background-color: #F1F1F1;
+    height: 100vh;
+    overflow: hidden;
+    padding-left: 4rem;
+}
+
+.right-side{
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.nav-head-row{
+    margin-top: 8rem;
+}
+
+.nav-head{
+    font-family: 'ShameimaruSans_copy';
+    color: #454040;
+    font-size: 1.5rem;
+}
+
+.nav-head span{
+    font-size: 1.1rem;
+    font-weight: 50;
+    color: #707070;
+    font-family: 'Geomanist-Book';
+}
+
+.nav-items-bar{
+    margin-top: 4rem;
+}
+
+.nav-item{
+    font-family: 'Geomanist-Book';
+    font-size: 1.1rem;
+    font-weight: lighter;
+    margin-top: 0.8rem;
+}
+
+.nav-items-bar-2{
+    margin-top: 5rem;
+}
+
+#left-links{
+    text-decoration: none;
+    color: #707070;
+}
+
+.emaillink:hover{
+    color: #454040;
+}
+
+/* Home */
+#home{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+.home-left-content{
+    margin-right: 2rem;
+}
+
+.home-head{
+    font-size: 2.2rem;
+    font-family: 'ShameimaruSans_copy';
+    color: #454040;
+}
+
+.police{
+    margin-top: -0.5rem;
+}
+
+.hr{
+    height: 0.3rem;
+    width: 100%;
+    background-color: #454040;
+    border: none;
+}
+
+.home-content{
+    font-family: 'Geomanist-Book';
+    color: #707070;
+    font-size: 1.25rem;
+}
+
+.phone-illus{
+    display: none;
+}
+
+.button{
+    font-family: 'ShameimaruSans_copy';
+    background-color: #454040;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.button:hover{
+    background-color: #292828;
+    color: white;
+}
+
+.illus-outer{
+    width: 15rem;
+    height: 15rem;
+    background-color: none;
+    border-radius: 14px;
+    transition-duration: 0.5s;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.illus-outer:hover{
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.illus-inner{
+    position: relative;
+    z-index: -3;
+    transform: translate(8%,7%);
+    width: 13rem;
+    height: 13rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+/* About */
+#about{
+    display: flex;
+    height: 98vh;
+    align-items: center;
+}
+
+.about-hr{
+    margin-left: 1rem;
+    width: 95%;
+}
+
+.about-illus{
+    width: 100%;
+}
+
+.about-inner-illus{
+    transform: translate(2%,7%);
+    width: 96%;
+    height: 13rem;
+    background: url("https://www.amity.edu/ais/gurgaon46/assets/images/2017-18/happenings/aisg46_018.jpg");
+    background-position-y: -12rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+.about-content{
+    margin-left: 0.2rem;
+    color: #707070;
+}
+
+/* Report */
+
+#report{
+    display: flex;
+    align-items: center;
+    height: 102vh;
+}
+
+.report-hr{
+    width: 90%;
+    margin-left: 1rem;
+}
+
+
+.report-content{
+    margin-left: -3.5rem;
+    font-family: 'Geomanist-Book';
+    color: #B2B2B2;
+    font-size: 1.25rem;
+}
+
+.report-head{
+    font-size: 2.2rem;
+    font-family: 'ShameimaruSans_copy';
+    color: #454040;
+    margin-top: 5rem;
+}
+
+.report-outer{
+    padding-left: 4rem;
+}
+
+.report-inner-1{
+    transform: translate(8%,7%);
+    width: 13rem;
+    height: 13rem;
+    background: url('https://cdn.discordapp.com/attachments/832263994839531600/833399069010559008/Illustration_3.png');
+    background-size: contain;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+.report-inner-2{
+    transform: translate(8%,7%);
+    width: 13rem;
+    height: 13rem;
+    background: url('https://cdn.discordapp.com/attachments/832263994839531600/833399076074422272/Illustration_4.png');
+    background-size: contain;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+.report-inner-content{
+    font-family: 'Geomanist-Medium';
+    color: #454040;
+}
+
+.or{
+    margin-top: 5rem;
+    font-family: 'Geomanist-Medium';
+    color: #454040;
+    font-size: 1.5rem;
+}
+
+.reveal:hover,.anonymous:hover{
+    cursor: pointer;
+}
+
+.reveal{
+    display: block;
+    text-align: center;
+}
+
+.form-reveal{
+    display: none;
+}
+
+.anonymous{
+    display: block;
+}
+
+.form-anonymous{
+    display: none;
+}
+
+.labels{
+    font-size: 1.1rem;
+    font-family: 'ShameimaruSans_copy';
+    color: #454040;
+}
+
+.inputs{
+    background-color: #F1F1F1;
+    border: none;
+    padding: 10px;
+    font-family: 'Geomanist-Book';
+}
+
+.radios{
+    background-color: #F1F1F1;
+    font-family: 'Geomanist-Book';
+    color: #B2B2B2;
+    padding: 10px;
+    width: 100%;
+    transition-duration: 0.4s;
+}
+
+.radios:hover{
+    background-color: #888585;
+    color: white;
+}
+
+.radios-2{
+    background-color: #F1F1F1;
+    font-family: 'Geomanist-Book';
+    color: #B2B2B2;
+    padding: 10px;
+    width: 100%;
+    transition-duration: 0.4s;
+}
+
+
+.radios-2:hover{
+    background-color: #888585;
+    color: white;
+}
+
+
+.inputs:focus{
+    box-shadow: none;
+    border: none;
+    background-color: #F1F1F1;
+}
+
+.textarea{
+    background-color: #F1F1F1;
+    border: none;
+    font-family: 'Geomanist-Book';
+}
+
+.inputs::placeholder{
+    color: #B2B2B2;
+}
+
+.textarea::placeholder{
+    font-size: 0.9rem;
+    font-family: 'Geomanist-Book';
+    color: #B2B2B2;
+}
+
+.textarea:focus{
+    background-color: #F1F1F1;
+    box-shadow: none;
+    border: none;
+}
+
+.padding-right{
+    padding-right: 0.2rem;
+}
+
+.padding-left{
+    padding-left: 0.2rem;
+}
+
+#file{
+    background-color: #F1F1F1;
+}
+
+/* Team */
+#team{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.team-content{
+    margin-left: 0.2rem;
+    color: #B2B2B2;
+    font-family: 'Geomanist-Book';
+    font-size: 1.25rem;
+}
+
+.content  {
+    padding: 0em 5em;
+}
+
+.qute {
+    padding-left: 1em;
+    border-left: #B2B2B2 0.25em solid;
+}
+
+.card-title{
+    font-family: 'ShameimaruSans_copy';
+    color: #454040;
+}
+
+.card-text{
+    font-family: 'Geomanist-Book';
+    color: #707070;
+}
+
+.underlined{
+    font-family: 'Geomanist-Medium';
+    color: #454040;
+}
+
+.students-head{
+    margin-top: 8rem;
+}
+
+.underlined::after {
+    content: "";
+    display: block;
+    width: 5%;
+    height: 4px;
+    background-color: #454040;
+}
+.card {
+    line-height: 0.6em;
+}
+
+@media(max-width: 500px){
+
+    body{
+        padding: 1rem;
+    }
+    ::-webkit-scrollbar{
+        display: none;
+    }
+
+    .left-side{
+        display: none;
+    }
+
+    .laptop-illus{
+        display: none;
+    }
+
+    .home-head{
+        font-size: 1.5rem;
+    }
+
+    .home-left-content{
+        margin: auto;
+        margin-top: 4rem;
+    }
+
+    .home-content{
+        font-size: 1rem;
+    }
+
+    .home-top{
+        margin-top: 3rem;
+    }
+
+    .phone-illus{
+        display: block;
+    }
+
+    .phone-illus .illus-outer{
+        margin: auto;
+    }
+
+    #about{
+        margin-top: 10rem;
+    }
+
+    .about-head{
+        font-size: 1.25rem;
+    }
+
+    .about-content{
+        margin: 0rem;
+        font-size: 1rem;
+    }
+
+    .about-inner-illus{
+        background-position-x: -20rem;
+    }
+
+    #report{
+        margin-top: 25rem;
+    }
+
+    .report-content{
+        margin-left: 0rem;
+    }
+
+    .report-head{
+        font-size: 1.2rem;
+    }
+
+    .padding-right{
+        padding-right: 0.2rem;
+    }
+    
+    .padding-left{
+        padding-left: 0.2rem;
+    }
+
+    .police{
+        width: 2rem;
+    }
+
+    .or{
+        margin-bottom: 4rem;
+    }
+
+    .report-outer{
+        padding-left: 1rem;
+    }
+
+    #team{
+        margin-top: 28rem;
+    }
+
+    .illus-outer{
+        margin: auto;
+    }
+
+    .students-head{
+        margin-top: 0rem;
+    }
+
+    .team-content{
+        margin-left: 0rem;
+        font-size: 1rem;
+    }
+
+    .navbar{
+        display: block;
+        background-color: #F1F1F1;
+    }
+
+    .blackout{
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: rgba(0, 0, 0, 0.281);
+        transition: all 0.5s;
+    }
+
+    .navbar-links-container{
+        display: block;
+        height: 100%;
+        width: 80%;
+        position: fixed;
+        top: 0px;
+        left: 100%;
+        background-color: #F1F1F1;
+        transition: all 0.5s;
+    }
+
+    .navbar-toggler{
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-link{
+        color: #454040;
+        text-align: right;
+    }
+
+    .navbar-toggler{
+        border: none;
+    }
+
+    .phone-nav-item{
+        padding-right: 1rem;
+    }
+}

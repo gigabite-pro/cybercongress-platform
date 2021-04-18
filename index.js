@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}));
+app.use(express.static('public'));
 
 //DB Config
 const db = require('./config/keys').MongoURI;
@@ -25,7 +26,7 @@ app.get('/', (req,res)=>{
     res.render('home');
 });
 
-app.post('/postRevealReport', (req,res)=>{
+app.post('/postReport', (req,res)=>{
     const reportType = req.body.reportType;
     let name = req.body.name;
     let typeOfUser = req.body.typeOfUser;
