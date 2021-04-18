@@ -7,10 +7,121 @@
     <title>Home</title>
 </head>
 <body>
-    <form action="/postReport" method="POST">
-        <input type="text" name="name" id="name" placeholder="Name">
-        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
-        <button type="submit">Submit</button>
-    </form>
+  <form action="/postRevealReport" method="POST" class="form-anonymous">
+    <input type="text" name="reportType" id="reportType" value="Anonymous" hidden>
+        <div class="mt-2">
+    <div class="mt-3">
+      <p class="labels">What do you want to tell us?</p>
+      <textarea type="text" name="message" rows="4" id="message" class="form-control textarea"
+        placeholder="E.g. I have been receiving unsolicited messages from an unknown account, what should I do?" required></textarea>
+    </div>
+    <div class="mt-3">
+      <p class="labels">You can also attach images</p>
+      <input type="file" class="form-control input" name="file" id="file">
+    </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <p class="labels">Keep it a secret? *</p>
+      </div>
+      <div class="col-6 padding-right">
+        <button type="button" id="button" name="yes" class="btn radios-2">Yes</button>
+      </div>
+      <div class="col-6 padding-left">
+        <button type="button" id="button" name="no" class="btn radios-2">No</button>
+      </div>
+      <input type="text" name="maintainSecrecy" id="maintainSecrecy" required hidden>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-end">
+        <button type="submit" class="btn button">Submit</button>
+      </div>
+    </div>
+  </form>
+    <!-- <form action="/postRevealReport" method="POST" class="form-reveal">
+        <input type="text" name="reportType" id="reportType" value="Identity Revealed" hidden>
+        <div class="mt-2">
+          <p class="labels">My name is *</p>
+          <input type="text" name="name" id="name" class="form-control inputs" placeholder="John Doe" autocomplete="off">
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p class="labels">I am a *</p>
+          </div>
+          <div class="col-6 padding-right">
+            <button type="button" id="button" name="student" class="btn radios">Student</button>
+          </div>
+          <div class="col-6 padding-left">
+            <button type="button" id="button" name="teacher" class="btn radios">Teacher</button>
+          </div>
+          <input type="text" name="typeOfUser" id="typeOfUser" hidden>
+        </div>
+        <div class="mt-3">
+          <p class="labels">What do you want to tell us? *</p>
+          <textarea type="text" name="message" rows="4" id="message" class="form-control textarea"
+            placeholder="E.g. I have been receiving unsolicited messages from an unknown account, what should I do?" autocomplete="off"></textarea>
+        </div>
+        <div class="mt-3">
+          <p class="labels">You can also attach images</p>
+          <input type="file" class="form-control" name="file" id="file">
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <p class="labels">Keep it a secret? *</p>
+          </div>
+          <div class="col-6 padding-right">
+            <button type="button" id="button" name="yes" class="btn radios-2">Yes</button>
+          </div>
+          <div class="col-6 padding-left">
+            <button type="button" id="button" name="no" class="btn radios-2">No</button>
+          </div>
+          <input type="text" name="maintainSecrecy" id="maintainSecrecy" required hidden>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-end">
+            <button type="submit" class="btn button">Submit</button>
+          </div>
+        </div>
+      </form> -->
+      <script>
+          const radios1 = document.querySelectorAll('.radios');
+let radio1Value = document.querySelector('#typeOfUser');
+
+radios1.forEach(radio=>{
+  radio.addEventListener('click', ()=>{
+    radios1.forEach(radio=>{
+      radio.style.background = '#F1F1F1';
+      radio.style.color = 'grey';
+    })
+
+    radio.style.background = '#888585';
+    radio.style.color = 'white';
+    radio.style.boxShadow = 'none'
+    const value = radio.getAttribute('name');
+    console.log(value);
+    radio1Value.setAttribute("value", value);
+    console.log(radio1Value.value);
+  });
+})
+
+const radios2 = document.querySelectorAll('.radios-2');
+let radio2Value = document.querySelector('#maintainSecrecy');
+
+radios2.forEach(radio=>{
+  radio.addEventListener('click', ()=>{
+    radios2.forEach(radio=>{
+      radio.style.background = '#F1F1F1';
+      radio.style.color = 'grey';
+    })
+
+    radio.style.background = '#888585';
+    radio.style.color = 'white';
+    radio.style.boxShadow = 'none'
+    const value = radio.getAttribute('name');
+    console.log(value);
+    radio2Value.setAttribute("value", value);
+    console.log(radio2Value.value);
+  });
+});
+      </script>
 </body>
 </html>

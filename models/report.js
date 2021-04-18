@@ -1,11 +1,24 @@
 const mongoose = require('mongoose')
 
 const reportSchema = new mongoose.Schema({
+    reportType:{
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
-        default : "Anonymous"
+    },
+    typeOfUser:{
+        type: String,
     },
     message: {
+        type: String,
+        required: true,
+    },
+    images: {
+        type: Array,
+    },
+    secrecy: {
         type: String,
         required: true,
     },
