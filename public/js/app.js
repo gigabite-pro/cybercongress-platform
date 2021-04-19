@@ -17,7 +17,8 @@ $(".navlink").click(function () {
     $('.anonymous').css("display", "block");
     $('.reveal').css("display", "none");
     $('.form-reveal').css("display", "block");
-    $('.students-head').css('margin-top', '2rem');
+    $('#about').css("margin-bottom", "10rem");
+    $('#report').css("margin-bottom", "10rem");
     if(window.innerWidth < 500){
       $('#report').css("margin-top", "35rem");
       $('#team').css("margin-top", "40rem");
@@ -37,7 +38,8 @@ $(".navlink").click(function () {
     $('.reveal').css("display", "block");
     $('.anonymous').css("display", "none");
     $('.form-anonymous').css("display", "block");
-    $('.students-head').css('margin-top', '8rem');
+    $('#about').css("margin-bottom", "5rem");
+    $('#report').css("margin-bottom", "10rem");
     if(window.innerWidth < 500){
       $('#report').css("margin-top", "30rem");
       $('#team').css("margin-top", "35rem");
@@ -193,3 +195,13 @@ illustrationBox.addEventListener('mouseover', ()=>{
   }
 });
 
+// Loader
+
+const submitBtn = document.querySelectorAll('#submit-btn');
+const loaderBackdrop = document.querySelector('#loading');
+
+submitBtn.forEach(btn => {
+  btn.addEventListener('click', ()=>{
+    loaderBackdrop.style.display = 'block';
+  });
+});

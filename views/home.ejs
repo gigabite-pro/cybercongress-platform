@@ -47,6 +47,7 @@
     </nav>
   </header>
   <div class="container-fluid">
+    <div id="loading"></div>
     <div class="row">
       <!-- Sidebar -->
       <div class="col-md-3 col-12 left-side">
@@ -308,8 +309,11 @@
                         placeholder="E.g. I have been receiving unsolicited messages from an unknown account, what should I do?" autocomplete="off" required></textarea>
                     </div>
                     <div class="mt-3">
-                      <p class="labels">You can also attach images</p>
-                      <input type="file" class="form-control" name="files" multiple id="file">
+                      <p class="labels secret">You can also attach images</p>
+                      <small class="form-text text-muted">
+                        Maximum 7 images allowed.
+                      </small>
+                      <input type="file" class="form-control mt-2" name="files" multiple id="file">
                     </div>
                     <div class="row mt-3">
                       <div class="col-12">
@@ -330,7 +334,7 @@
                     </div>
                     <div class="row mt-3">
                       <div class="col-12 text-end">
-                        <button type="submit" class="btn button">Submit</button>
+                        <button type="submit" class="btn button" id="submit-btn">Submit</button>
                       </div>
                     </div>
                   </form>
@@ -351,8 +355,11 @@
                         placeholder="E.g. I have been receiving unsolicited messages from an unknown account, what should I do?" required></textarea>
                     </div>
                     <div class="mt-3">
-                      <p class="labels">You can also attach images</p>
-                      <input type="file" class="form-control input" name="files" multiple id="file">
+                      <p class="labels secret">You can also attach images</p>
+                      <small class="form-text text-muted">
+                        Maximum 7 images allowed.
+                      </small>
+                      <input type="file" class="form-control input mt-2" name="files" multiple id="file">
                     </div>
                     <div class="row mt-3">
                       <div class="col-12">
@@ -373,7 +380,7 @@
                     </div>
                     <div class="row mt-3">
                       <div class="col-12 text-end">
-                        <button type="submit" class="btn button">Submit</button>
+                        <button type="submit" class="btn button" id="submit-btn">Submit</button>
                       </div>
                     </div>
                   </form>

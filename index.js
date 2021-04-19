@@ -49,33 +49,39 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     var secrecy = req.body.maintainSecrecy;
 
     var fileinfo = req.files;
-    try {
-        for(let i=0; i < fileinfo.length; i++){
-            const buffer = Buffer.from(fileinfo[i].buffer);
-            const base64String = buffer.toString('base64');
-    
-            const config = {
-                method: 'post',
-                url: 'https://api.imgur.com/3/image',
-                headers: { 
-                    'Authorization': `Client-ID ${process.env.Client_ID}`, 
-                     Accept: 'application/json',
-                },
-                data : {'image':base64String},
-                mimeType: 'multipart/form-data',
-            };
-    
-            axios(config)
-            .then(function (response) {
-                images.push(response.data.data.link);
-            })
-            .catch(function (error) {
-                console.log(error.response.status);
-            });
-        }   
-    } catch (error) {
-        console.log(error)
-        res.render('error');
+    if(fileinfo.length > 7){
+        res.render('error')
+    }
+
+    if(fileinfo.length != 0){
+        try {
+            for(let i=0; i < fileinfo.length; i++){
+                const buffer = Buffer.from(fileinfo[i].buffer);
+                const base64String = buffer.toString('base64');
+        
+                const config = {
+                    method: 'post',
+                    url: 'https://api.imgur.com/3/image',
+                    headers: { 
+                        'Authorization': `Client-ID ${process.env.Client_ID}`, 
+                         Accept: 'application/json',
+                    },
+                    data : {'image':base64String},
+                    mimeType: 'multipart/form-data',
+                };
+        
+                axios(config)
+                .then(function (response) {
+                    images.push(response.data.data.link);
+                })
+                .catch(function (error) {
+                    console.log(error.response.status);
+                });
+            }   
+        } catch (error) {
+            console.log(error)
+            res.render('error');
+        }
     }
 
     if(!name){
@@ -95,6 +101,10 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     setTimeout(() => {
         if(images.length == 0){
             images = ["Not Provided"]
+        }
+
+        if(images.length != fileinfo.length){
+            res.render('error')
         }
 
 
@@ -157,7 +167,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
             console.log(err);
             res.render('error');
         });
-    }, fileinfo.length*2500);
+    }, 12000);
 });
 
 
