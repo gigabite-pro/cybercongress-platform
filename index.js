@@ -134,6 +134,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                 Report.findById(id, (err,docs)=>{
                     if(err){
                         console.log(err)
+                        res.render('error');
                     }
                     const dbName = docs.name;
                     const dbReportType = docs.reportType;
