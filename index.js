@@ -75,10 +75,9 @@ app.post('/postReport', (req,res)=>{
             console.log(response.data)
             });
         })
+        res.render('home');
     })
     .catch((err)=> console.log(err));
-
-    res.render('index');
 });
 
 
