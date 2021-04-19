@@ -101,7 +101,7 @@ radios1.forEach(radio=>{
 })
 
 const radios2 = document.querySelectorAll('.radios-2');
-let radio2Value = document.querySelector('#maintainSecrecy');
+const formReveal = document.querySelector('.form-reveal');
 
 radios2.forEach(radio=>{
   radio.addEventListener('click', ()=>{
@@ -109,6 +109,12 @@ radios2.forEach(radio=>{
       radio.style.background = '#F1F1F1';
       radio.style.color = 'grey';
     })
+
+    if(formReveal.style.display == "block"){
+      var radio2Value = document.querySelector('#maintainSecrecy1');
+    }else{
+      var radio2Value = document.querySelector('#maintainSecrecy2');
+    }
 
     radio.style.background = '#888585';
     radio.style.color = 'white';
