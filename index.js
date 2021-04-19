@@ -44,7 +44,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     const reportType = req.body.reportType;
     var name = req.body.name;
     var typeOfUser = req.body.typeOfUser;
-    var phoneNumber = req.body.phone;
+    var phone = req.body.phone;
     const message = req.body.message.trim();
     var images = [];
     var secrecy = req.body.maintainSecrecy;
@@ -89,7 +89,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
         name = "Anonymous"
     }
 
-    if(!phoneNumber){
+    if(!phone){
         phone = "Anonymous"
     }
 
