@@ -284,7 +284,7 @@
               </div>
               <div class="row mt-5 justify-content-center">
                 <div class="col-md-5 col-12 report-outer">
-                  <form action="/postReport" method="POST" class="form-reveal">
+                  <form action="/postReport" method="POST" enctype="multipart/form-data" class="form-reveal">
                     <input type="text" name="reportType" id="reportType" value="Identity Revealed" hidden>
                     <div class="mt-2">
                       <p class="labels">My name is *</p>
@@ -295,10 +295,10 @@
                         <p class="labels">I am a *</p>
                       </div>
                       <div class="col-6 padding-right">
-                        <button type="button" id="button" name="student" class="btn radios">Student</button>
+                        <button type="button" id="button" name="Student" class="btn radios">Student</button>
                       </div>
                       <div class="col-6 padding-left">
-                        <button type="button" id="button" name="teacher" class="btn radios">Teacher</button>
+                        <button type="button" id="button" name="Teacher" class="btn radios">Teacher</button>
                       </div>
                       <input type="text" name="typeOfUser" id="typeOfUser" required hidden>
                     </div>
@@ -309,7 +309,7 @@
                     </div>
                     <div class="mt-3">
                       <p class="labels">You can also attach images</p>
-                      <input type="file" class="form-control" name="file" id="file">
+                      <input type="file" class="form-control" name="files" multiple id="file">
                     </div>
                     <div class="row mt-3">
                       <div class="col-12">
@@ -338,7 +338,7 @@
                   <h3 class="or">OR</h3>
                 </div>
                 <div class="col-md-5 col-12 report-outer">
-                  <form action="/postReport" method="POST" class="form-anonymous">
+                  <form action="/postReport" method="POST" enctype="multipart/form-data"  class="form-anonymous">
                     <input type="text" name="reportType" id="reportType" value="Anonymous" hidden>
                     <div class="mt-3">
                       <p class="labels">What do you want to tell us?</p>
@@ -347,7 +347,7 @@
                     </div>
                     <div class="mt-3">
                       <p class="labels">You can also attach images</p>
-                      <input type="file" class="form-control input" name="file" id="file">
+                      <input type="file" class="form-control input" name="files" multiple id="file">
                     </div>
                     <div class="row mt-3">
                       <div class="col-12">

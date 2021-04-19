@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'ShameimaruSans_copy';
+    src: URL('/fonts/ShameimaruSans_copy.ttf') format('truetype');
+}
+
+body{
+    background-color: #F1F1F1;
+}
+
+#submit{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}        
+
+.button{
+    font-family: 'ShameimaruSans_copy';
+    background-color: #454040;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.button:hover{
+    background-color: #292828;
+    color: white;
+}

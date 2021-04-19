@@ -1,28 +1,21 @@
 {
   "name": "cybercong",
   "version": "1.0.0",
-  "description": "a platform for cybercongress of ais-46",
+  "description": "A platform for cybercongress of ais-46",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gigabite-pro/cybercongress-platform.git"
-  },
   "author": "Vaibhav Sharma",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gigabite-pro/cybercongress-platform/issues"
-  },
-  "homepage": "https://github.com/gigabite-pro/cybercongress-platform#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const multer = require('multer');
 const axios = require('axios');
 const mongoose = require('mongoose')
 const Report = require('./models/report');
@@ -10,8 +11,9 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //DB Config
 const db = require('./config/keys').MongoURI;
@@ -25,13 +27,46 @@ app.get('/', (req,res)=>{
     res.render('home');
 });
 
-app.post('/postReport', (req,res)=>{
+var upload = multer();
+
+app.post('/postReport', upload.array('files'), (req,res,next)=>{
     const reportType = req.body.reportType;
-    let name = req.body.name;
-    let typeOfUser = req.body.typeOfUser;
+    var name = req.body.name;
+    var typeOfUser = req.body.typeOfUser;
     const message = req.body.message.trim();
-    let images = [];
-    let secrecy = req.body.maintainSecrecy;
+    var images = [];
+    var secrecy = req.body.maintainSecrecy;
+
+    var fileinfo = req.files;
+    console.log(fileinfo);
+    try {
+        for(let i=0; i < fileinfo.length; i++){
+            const buffer = Buffer.from(fileinfo[i].buffer);
+            const base64String = buffer.toString('base64');
+    
+            const config = {
+                method: 'post',
+                url: 'https://api.imgur.com/3/image',
+                headers: { 
+                    'Authorization': `Client-ID ${process.env.Client_ID}`, 
+                     Accept: 'application/json',
+                },
+                data : {'image':base64String},
+                mimeType: 'multipart/form-data',
+            };
+    
+            axios(config)
+            .then(function (response) {
+                images.push(response.data.data.link);
+            })
+            .catch(function (error) {
+                console.log(error.response.status);
+            });
+        }   
+    } catch (error) {
+        console.log(error)
+        res.render('error');
+    }
 
     if(!name){
         name = "Anonymous"
@@ -47,37 +82,47 @@ app.post('/postReport', (req,res)=>{
         secrecy = "False";
     }
 
-    newReport = new Report({
-        'reportType': reportType,
-        'name': name,
-        'typeOfUser': typeOfUser,
-        'message' : message,
-        'images': images,
-        'secrecy': secrecy,
-    });
+    setTimeout(() => {
+        if(images.length == 0){
+            images = ["Not Provided"]
+        }
 
-    newReport.save()
-    .then((report)=>{
-        const id = report.id;
-        Report.findById(id, (err,docs)=>{
-            if(err){
-                console.log(err)
-            }
-            const dbName = docs.name;
-            const dbReportType = docs.reportType;
-            const dbTypeOfUser = docs.typeOfUser;
-            const dbMessage = docs.message;
-            const dbImages = docs.images;
-            const dbSecrecy = docs.secrecy;
 
-            axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
-            ).then(response => {
-            console.log(response.data)
-            });
+        newReport = new Report({
+            'reportType': reportType,
+            'name': name,
+            'typeOfUser': typeOfUser,
+            'message' : message,
+            'images': images,
+            'secrecy': secrecy,
+        });
+    
+        newReport.save()
+        .then((report)=>{
+            const id = report.id;
+            Report.findById(id, (err,docs)=>{
+                if(err){
+                    console.log(err)
+                }
+                const dbName = docs.name;
+                const dbReportType = docs.reportType;
+                const dbTypeOfUser = docs.typeOfUser;
+                const dbMessage = docs.message;
+                const dbImages = docs.images;
+                const dbSecrecy = docs.secrecy;
+    
+                axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
+                ).then(response => {
+                console.log(response.data)
+                });
+            })
+            res.render('submit');
         })
-        res.render('home');
-    })
-    .catch((err)=> console.log(err));
+        .catch((err)=>{
+            console.log(err);
+            res.render('error');
+        });
+    }, fileinfo.length*2500);
 });
 
 
