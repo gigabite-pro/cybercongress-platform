@@ -103,7 +103,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
         secrecy = "False";
     }
 
-    if(phone.length > 10){
+    if(phone.toString().length > 10){
         res.render('error');
     }
 
@@ -146,8 +146,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                     axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
                     ).then(response => {
                     console.log(response.data)
-                    });
-    
+
                     var mailOptions = {
                         from: 'cybercongressaisg46@gmail.com',
                         to: 'cybercongressaisg46@gmail.com',
@@ -172,10 +171,14 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                           console.log(error);
                         } else {
                           console.log('Email sent: ' + info.response);
+                          res.render('submit');
                         }
                       });
+                    }).catch(err=>{
+                        console.log(err);
+                        res.render('error');
+                    });
                 })
-                res.render('submit');
             })
             .catch((err)=>{
                 console.log(err);
