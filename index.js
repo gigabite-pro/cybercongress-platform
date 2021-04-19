@@ -15,7 +15,6 @@ app.use(express.static(__dirname + '/public'));
 
 //DB Config
 const db = require('./config/keys').MongoURI;
-const { report } = require('process');
 
 //Connect DB
 mongoose.connect(db, {useNewUrlParser: true,useUnifiedTopology: true})
