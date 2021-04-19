@@ -44,6 +44,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     const reportType = req.body.reportType;
     var name = req.body.name;
     var typeOfUser = req.body.typeOfUser;
+    var phoneNumber = req.body.phone;
     const message = req.body.message.trim();
     var images = [];
     var secrecy = req.body.maintainSecrecy;
@@ -88,6 +89,10 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
         name = "Anonymous"
     }
 
+    if(!phoneNumber){
+        phone = "Anonymous"
+    }
+
     if(!typeOfUser){
         typeOfUser = "Anonymous"
     }
@@ -98,76 +103,86 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
         secrecy = "False";
     }
 
-    setTimeout(() => {
-        if(images.length == 0){
-            images = ["Not Provided"]
-        }
+    if(phone.length > 10){
+        res.render('error');
+    }
 
-        if(images.length != fileinfo.length){
-            res.render('error')
-        }
-
-
-        newReport = new Report({
-            'reportType': reportType,
-            'name': name,
-            'typeOfUser': typeOfUser,
-            'message' : message,
-            'images': images,
-            'secrecy': secrecy,
-        });
+    else{
+        setTimeout(() => {
+            if(images.length == 0){
+                images = ["Not Provided"]
+            }
     
-        newReport.save()
-        .then((report)=>{
-            const id = report.id;
-            Report.findById(id, (err,docs)=>{
-                if(err){
-                    console.log(err)
-                }
-                const dbName = docs.name;
-                const dbReportType = docs.reportType;
-                const dbTypeOfUser = docs.typeOfUser;
-                const dbMessage = docs.message;
-                const dbImages = docs.images;
-                const dbSecrecy = docs.secrecy;
+            if(images.length != fileinfo.length){
+                res.render('error')
+            }
     
-                axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
-                ).then(response => {
-                console.log(response.data)
-                });
-
-                var mailOptions = {
-                    from: 'cybercongressaisg46@gmail.com',
-                    to: 'cybercongressaisg46@gmail.com',
-                    subject: `Report Type: ${dbReportType}`,
-                    html: `<p>
-                    <strong>User Type: </strong>${dbTypeOfUser} 
-                    <br>
-                    <strong>Name: </strong>${dbName}
-                    <br>
-                    <strong>Message: </strong>${dbMessage}
-                    <br>
-                    <strong>Images: </strong>${dbImages}
-                    <br>
-                    <strong>Maintain Secrecy: </strong>${dbSecrecy}
-                  </p>`
-                };
-
-                transporter.sendMail(mailOptions, function(error, info){
-                    if (error) {
-                      console.log(error);
-                    } else {
-                      console.log('Email sent: ' + info.response);
+    
+            newReport = new Report({
+                'reportType': reportType,
+                'name': name,
+                'typeOfUser': typeOfUser,
+                'phone' : phone.toString(),
+                'message' : message,
+                'images': images,
+                'secrecy': secrecy,
+            });
+        
+            newReport.save()
+            .then((report)=>{
+                const id = report.id;
+                Report.findById(id, (err,docs)=>{
+                    if(err){
+                        console.log(err)
                     }
-                  });
+                    const dbName = docs.name;
+                    const dbReportType = docs.reportType;
+                    const dbPhone = docs.phone;
+                    const dbTypeOfUser = docs.typeOfUser;
+                    const dbMessage = docs.message;
+                    const dbImages = docs.images;
+                    const dbSecrecy = docs.secrecy;
+        
+                    axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
+                    ).then(response => {
+                    console.log(response.data)
+                    });
+    
+                    var mailOptions = {
+                        from: 'cybercongressaisg46@gmail.com',
+                        to: 'cybercongressaisg46@gmail.com',
+                        subject: `Report Type: ${dbReportType}`,
+                        html: `<p>
+                        <strong>User Type: </strong>${dbTypeOfUser} 
+                        <br>
+                        <strong>Name: </strong>${dbName}
+                        <br>
+                        <strong>Phone Number: </strong>${dbPhone}
+                        <br>
+                        <strong>Message: </strong>${dbMessage}
+                        <br>
+                        <strong>Images: </strong>${dbImages}
+                        <br>
+                        <strong>Maintain Secrecy: </strong>${dbSecrecy}
+                      </p>`
+                    };
+    
+                    transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });
+                })
+                res.render('submit');
             })
-            res.render('submit');
-        })
-        .catch((err)=>{
-            console.log(err);
-            res.render('error');
-        });
-    }, 12000);
+            .catch((err)=>{
+                console.log(err);
+                res.render('error');
+            });
+        }, 12000);
+    }
 });
 
 

@@ -20,35 +20,44 @@ body{
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
-  }
-  ::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
     width: 8px !important;
     background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
+}
+::-webkit-scrollbar-thumb {
     background-color: transparent;
-  }
+}
   
-  .on-scrollbar::-webkit-scrollbar-track {
+.on-scrollbar::-webkit-scrollbar-track {
     background-color: transparent !important;
-  }
+}
   
-  .on-scrollbar::-webkit-scrollbar {
+.on-scrollbar::-webkit-scrollbar {
     width: 8px !important;
     background-color: transparent;
-  }
+}
   
-  .on-scrollbar::-webkit-scrollbar-thumb {
+.on-scrollbar::-webkit-scrollbar-thumb {
     background-color: #d1d1d1;
     border-radius: 50px;
-  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 #loading{
     display: none;
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 3;
+    z-index: 5;
     top: 0px;
     left: 0px;
     background-color: rgba(0, 0, 0, 0.281);
@@ -58,6 +67,7 @@ body{
 
 .navbar{
     display: none;
+    z-index: -1;
 }
 
 .left-side{
@@ -275,6 +285,10 @@ body{
     color: #454040;
 }
 
+.laptop-or{
+    display: none;
+}
+
 .or{
     margin-top: 1rem;
     font-family: 'Geomanist-Medium';
@@ -288,8 +302,6 @@ body{
 
 .reveal{
     display: block;
-    margin: auto;
-    margin-left: 3rem;
 }
 
 .form-reveal{
@@ -298,8 +310,6 @@ body{
 
 .anonymous{
     display: block;
-    margin: auto;
-    margin-left: -3rem;
 }
 
 .form-anonymous{
@@ -532,6 +542,10 @@ small{
 
     .police{
         width: 2rem;
+    }
+
+    .laptop-or{
+        display: block;
     }
 
     .or{
