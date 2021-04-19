@@ -78,7 +78,7 @@ app.post('/postReport', (req,res)=>{
     })
     .catch((err)=> console.log(err));
 
-    res.send('Added to db')
+    res.render('index');
 });
 
 
