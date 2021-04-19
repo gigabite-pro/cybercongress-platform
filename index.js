@@ -40,7 +40,7 @@ app.get('/', (req,res)=>{
 
 var upload = multer();
 
-app.post('/postReport', upload.array('files'), (req,res,next)=>{
+app.post('/postReport', upload.array('files'), (req,res)=>{
     const reportType = req.body.reportType;
     var name = req.body.name;
     var typeOfUser = req.body.typeOfUser;
@@ -48,11 +48,13 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     const message = req.body.message.trim();
     var images = [];
     var secrecy = req.body.maintainSecrecy;
+    // Getting form data
 
     var fileinfo = req.files;
     if(fileinfo.length > 7){
         res.render('error')
     }
+    // If 8 files, show error page
 
     if(fileinfo.length != 0){
         try {
@@ -80,8 +82,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                 });
             }   
         } catch (error) {
-            console.log(error)
-            res.render('error');
+            console.log(error);
         }
     }
 
@@ -133,8 +134,7 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                 const id = report.id;
                 Report.findById(id, (err,docs)=>{
                     if(err){
-                        console.log(err)
-                        res.render('error');
+                        console.log(err);
                     }
                     const dbName = docs.name;
                     const dbReportType = docs.reportType;
@@ -146,39 +146,39 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
         
                     axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
                     ).then(response => {
-                    console.log(response.data)
+                        console.log(response.data)
 
-                    var mailOptions = {
-                        from: 'cybercongressaisg46@gmail.com',
-                        to: 'cybercongressaisg46@gmail.com',
-                        subject: `Report Type: ${dbReportType}`,
-                        html: `<p>
-                        <strong>User Type: </strong>${dbTypeOfUser} 
-                        <br>
-                        <strong>Name: </strong>${dbName}
-                        <br>
-                        <strong>Phone Number: </strong>${dbPhone}
-                        <br>
-                        <strong>Message: </strong>${dbMessage}
-                        <br>
-                        <strong>Images: </strong>${dbImages}
-                        <br>
-                        <strong>Maintain Secrecy: </strong>${dbSecrecy}
-                      </p>`
-                    };
+                        var mailOptions = {
+                            from: 'cybercongressaisg46@gmail.com',
+                            to: 'cybercongressaisg46@gmail.com',
+                            subject: `Report Type: ${dbReportType}`,
+                            html: `<p>
+                            <strong>User Type: </strong>${dbTypeOfUser} 
+                            <br>
+                            <strong>Name: </strong>${dbName}
+                            <br>
+                            <strong>Phone Number: </strong>${dbPhone}
+                            <br>
+                            <strong>Message: </strong>${dbMessage}
+                            <br>
+                            <strong>Images: </strong>${dbImages}
+                            <br>
+                            <strong>Maintain Secrecy: </strong>${dbSecrecy}
+                        </p>`
+                        };
     
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if (error) {
-                          console.log(error);
-                        } else {
-                          console.log('Email sent: ' + info.response);
-                          res.render('submit');
-                        }
-                      });
-                    }).catch(err=>{
-                        console.log(err);
-                        res.render('error');
-                    });
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                            console.log(error);
+                            } else {
+                            console.log('Email sent: ' + info.response);
+                            res.render('submit');
+                            }
+                        });
+                        }).catch(err=>{
+                            console.log(err);
+                            res.render('error');
+                        });
                 })
             })
             .catch((err)=>{
