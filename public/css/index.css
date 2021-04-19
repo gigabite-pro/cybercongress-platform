@@ -300,6 +300,15 @@ body{
     color: #454040;
 }
 
+.secret{
+    margin-bottom: 0.1rem;
+}
+
+small{
+    font-family: 'Geomanist-Book';
+    color: #454040;
+}
+
 .inputs{
     background-color: #F1F1F1;
     border: none;
