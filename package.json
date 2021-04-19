@@ -4,6 +4,7 @@
   "description": "a platform for cybercongress of ais-46",
   "main": "index.js",
   "scripts": {
+    "start": "node index,js",
     "build": "node index.js"
   },
   "repository": {
