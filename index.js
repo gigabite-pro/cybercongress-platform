@@ -3,7 +3,8 @@ const app = express();
 const path = require('path');
 const multer = require('multer');
 const axios = require('axios');
-const mongoose = require('mongoose')
+const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 const Report = require('./models/report');
 require('dotenv').config();
 
@@ -23,6 +24,16 @@ mongoose.connect(db, {useNewUrlParser: true,useUnifiedTopology: true})
 .then(() => console.log('db connected...'))
 .catch(err => console.log(err))
 
+//Mail Config
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'cybercongressaisg46@gmail.com',
+      pass: `${process.env.EMAIL_PASS}`
+    }
+  });
+  
+
 app.get('/', (req,res)=>{
     res.render('home');
 });
@@ -38,7 +49,6 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
     var secrecy = req.body.maintainSecrecy;
 
     var fileinfo = req.files;
-    console.log(fileinfo);
     try {
         for(let i=0; i < fileinfo.length; i++){
             const buffer = Buffer.from(fileinfo[i].buffer);
@@ -115,6 +125,31 @@ app.post('/postReport', upload.array('files'), (req,res,next)=>{
                 ).then(response => {
                 console.log(response.data)
                 });
+
+                var mailOptions = {
+                    from: 'cybercongressaisg46@gmail.com',
+                    to: 'cybercongressaisg46@gmail.com',
+                    subject: `Report Type: ${dbReportType}`,
+                    html: `<p>
+                    <strong>User Type: </strong>${dbTypeOfUser} 
+                    <br>
+                    <strong>Name: </strong>${dbName}
+                    <br>
+                    <strong>Message: </strong>${dbMessage}
+                    <br>
+                    <strong>Images: </strong>${dbImages}
+                    <br>
+                    <strong>Maintain Secrecy: </strong>${dbSecrecy}
+                  </p>`
+                };
+
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
             })
             res.render('submit');
         })

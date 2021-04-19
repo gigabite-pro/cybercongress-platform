@@ -252,7 +252,7 @@ body{
     transform: translate(8%,7%);
     width: 13rem;
     height: 13rem;
-    background: url('https://cdn.discordapp.com/attachments/832263994839531600/833399076074422272/Illustration_4.png');
+    background: url('https://cdn.discordapp.com/attachments/832263994839531600/833660193795473419/unknown.png');
     background-size: contain;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 14px;
@@ -264,7 +264,7 @@ body{
 }
 
 .or{
-    margin-top: 5rem;
+    margin-top: 1rem;
     font-family: 'Geomanist-Medium';
     color: #454040;
     font-size: 1.5rem;
@@ -276,7 +276,8 @@ body{
 
 .reveal{
     display: block;
-    text-align: center;
+    margin: auto;
+    margin-left: 3rem;
 }
 
 .form-reveal{
@@ -285,6 +286,8 @@ body{
 
 .anonymous{
     display: block;
+    margin: auto;
+    margin-left: -3rem;
 }
 
 .form-anonymous{
@@ -511,7 +514,8 @@ body{
     }
 
     .or{
-        margin-bottom: 4rem;
+        display: flex;
+        justify-content: center;
     }
 
     .report-outer{
