@@ -110,14 +110,13 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
 
     else{
         setTimeout(() => {
-            if(images.length == 0){
-                images = ["Not Provided"]
-            }
-    
             if(images.length != fileinfo.length){
                 res.render('error')
             }
-    
+            
+            if(images.length == 0){
+                images = ["Not Provided"]
+            }
     
             newReport = new Report({
                 'reportType': reportType,
