@@ -200,8 +200,29 @@ illustrationBox.addEventListener('mouseover', ()=>{
 const submitBtn = document.querySelectorAll('#submit-btn');
 const loaderBackdrop = document.querySelector('#loading');
 
+
 submitBtn.forEach(btn => {
   btn.addEventListener('click', ()=>{
-    loaderBackdrop.style.display = 'block';
+
+    if(formReveal.style.display == "block"){
+      var radio2Value = document.querySelector('#maintainSecrecy1');
+      if(!radio1Value.value){
+        alert(`Please select if you are a Student or Teacher.`);
+      }
+      else if(!radio2Value.value){
+        alert(`Please select if you want to maintain secrecy or not.`);
+      }
+      else{
+        loaderBackdrop.style.display = 'block';
+      }
+    }else{
+      var radio2Value = document.querySelector('#maintainSecrecy2');
+      if(!radio2Value.value){
+        alert(`Please select if you want to maintain secrecy or not.`);
+      }
+      else{
+        loaderBackdrop.style.display = 'block';
+      }
+    }
   });
 });
