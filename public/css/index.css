@@ -83,7 +83,11 @@ input[type=number] {
 }
 
 .nav-head-row{
-    margin-top: 8rem;
+    margin-top: 4rem;
+}
+
+.school-logo-laptop{
+    margin-left: -1rem;
 }
 
 .nav-head{
@@ -467,6 +471,16 @@ small{
     }
     ::-webkit-scrollbar{
         display: none;
+    }
+
+    .school-logo-phone-container{
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0.5rem;
+    }
+
+    .school-logo-phone-container img{
+        margin-right: -1rem;
     }
 
     .left-side{
