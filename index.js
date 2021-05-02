@@ -184,7 +184,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                 console.log(err);
                 res.render('error');
             });
-        }, 12000);
+        }, 9000);
     }
 });
 
