@@ -468,7 +468,7 @@ small{
 }
 
 /* Alumni */
-#alumn{
+#alumni{
     height: 108vh;
     display: flex;
     justify-content: center;
@@ -601,7 +601,7 @@ small{
         font-size: 1rem;
     }
 
-    #alumn{
+    #alumni{
         margin-top: 18rem;
         margin-bottom: 1rem;
     }
