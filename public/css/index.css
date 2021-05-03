@@ -606,6 +606,10 @@ small{
         margin-bottom: 1rem;
     }
 
+    .gursimran-card{
+        height: fit-content;
+    }
+
     .navbar{
         display: block;
         background-color: #F1F1F1;
