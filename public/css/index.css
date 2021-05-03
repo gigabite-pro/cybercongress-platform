@@ -472,7 +472,6 @@ small{
     height: 108vh;
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
 }
 
 .gursimran-card{
@@ -604,6 +603,7 @@ small{
 
     #alumn{
         margin-top: 18rem;
+        margin-bottom: 1rem;
     }
 
     .navbar{
