@@ -66,7 +66,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     method: 'post',
                     url: 'https://api.imgur.com/3/image',
                     headers: { 
-                        'Authorization': `Client-ID ${process.env.Client_ID}`, 
+                        'Authorization': `Client-ID ${process.env.CLIENT_ID}`, 
                          Accept: 'application/json',
                     },
                     data : {'image':base64String},
@@ -143,7 +143,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     const dbImages = docs.images;
                     const dbSecrecy = docs.secrecy;
         
-                    axios.get(`https://cyber-congress-gsheet-db-api.herokuapp.com/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}`
+                    axios.get(`${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
                     ).then(response => {
                         console.log(response.data)
 
