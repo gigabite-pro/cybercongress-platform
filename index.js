@@ -15,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.enable('trust proxy')
 
 //DB Config
 const db = require('./config/keys').MongoURI;
