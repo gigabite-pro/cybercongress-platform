@@ -544,7 +544,8 @@ small{
     }
 
     .about-inner-illus{
-        background-position-x: -20rem;
+        background: url('https://cdn.discordapp.com/attachments/832263339526455357/842626022419464212/WhatsApp_Image_2021-04-20_at_8.34.31_PM.jpeg');
+        background-size: contain;
     }
 
     #report{
