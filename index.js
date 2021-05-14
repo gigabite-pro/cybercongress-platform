@@ -49,6 +49,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
     var images = [];
     var secrecy = req.body.maintainSecrecy;
     // Getting form data
+    var ip = req.ip;
 
     var fileinfo = req.files;
     if(fileinfo.length > 7){
@@ -126,6 +127,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                 'message' : message,
                 'images': images,
                 'secrecy': secrecy,
+                'ip': ip,
             });
         
             newReport.save()
@@ -142,6 +144,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     const dbMessage = docs.message;
                     const dbImages = docs.images;
                     const dbSecrecy = docs.secrecy;
+                    const dbip = docs.ip;
         
                     axios.get(`${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
                     ).then(response => {
@@ -163,6 +166,8 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                             <strong>Images: </strong>${dbImages}
                             <br>
                             <strong>Maintain Secrecy: </strong>${dbSecrecy}
+                            <br>
+                            <strong>IP Address: </strong>${dbip}
                         </p>`
                         };
     
