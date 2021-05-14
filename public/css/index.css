@@ -474,9 +474,10 @@ small{
     justify-content: center;
 }
 
-.gursimran-card{
-    height: 8.7rem;
+.responsive-card{
+    height: 8.3rem;
 }
+
 
 @media(max-width: 500px){
 
