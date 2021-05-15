@@ -37,6 +37,10 @@
   const time = [0,100,150,200,250,300];
 
   // Loading Backdrop after submit btn click
+  const message = document.querySelectorAll('#message');
+  const nameOfUser = document.querySelector('#name');
+  const phone = document.querySelector('#phone');
+  const formAnon = document.querySelector('.form-anonymous')
   const submitBtn = document.querySelectorAll('#submit-btn');
   const loaderBackdrop = document.querySelector('#loading');
 
@@ -63,12 +67,8 @@ $(".navlink").click(function () {
     $('.anonymous').css("display", "block");
     $('.reveal').css("display", "none");
     $('.form-reveal').css("display", "block");
-    $('#about').css("margin-bottom", "10rem");
-    $('#report').css("margin-bottom", "10rem");
-    if(window.innerWidth < 500){
-      $('#report').css("margin-top", "35rem");
-      $('#team').css("margin-top", "40rem");
-    }
+    $('#report').css('height','fit-content');
+    $('#report').css('margin-bottom','2rem');
   });
 
 
@@ -78,12 +78,7 @@ $(".navlink").click(function () {
     $('.reveal').css("display", "block");
     $('.anonymous').css("display", "none");
     $('.form-anonymous').css("display", "block");
-    $('#about').css("margin-bottom", "5rem");
-    $('#report').css("margin-bottom", "10rem");
-    if(window.innerWidth < 500){
-      $('#report').css("margin-top", "30rem");
-      $('#team').css("margin-top", "35rem");
-    }
+    $('#report').css('height','fit-content');
   });
 
   // Illustration on phone
@@ -217,25 +212,50 @@ illustrationBox.addEventListener('mouseover', ()=>{
 
  // Loading Backdrop after submit btn click and form validation
 submitBtn.forEach(btn => {
-  btn.addEventListener('click', ()=>{
+  btn.addEventListener('click', (e)=>{
 
     if(formReveal.style.display == "block"){
       var radio2Value = document.querySelector('#maintainSecrecy1');
       if(!radio1Value.value){
         alert(`Please select if you are a Student or Teacher.`);
+        e.preventDefault();
       }
       else if(!radio2Value.value){
         alert(`Please select if you want to maintain secrecy or not.`);
+        e.preventDefault();
+      }
+      else if(phone.value == ""){
+        alert('Please enter your phone number.');
+        e.preventDefault();
+      }
+      else if(phone.value.toString().length > 10){
+        alert('Phone number cannot exceed 10 digits.');
+        e.preventDefault();
+      }
+      else if(nameOfUser.value == ""){
+        alert('Please enter your name.');
+        e.preventDefault();
+      }
+      else if(message[0].value == ""){
+        alert('Please enter your message.');
+        e.preventDefault();
       }
       else{
+        formReveal.submit();
         loaderBackdrop.style.display = 'block';
       }
     }else{
       var radio2Value = document.querySelector('#maintainSecrecy2');
       if(!radio2Value.value){
         alert(`Please select if you want to maintain secrecy or not.`);
+        e.preventDefault();
+      }
+      else if(message[1].value == ""){
+        alert('Please enter your message.');
+        e.preventDefault();
       }
       else{
+        formAnon.submit();
         loaderBackdrop.style.display = 'block';
       }
     }
