@@ -130,7 +130,7 @@ input[type=number] {
 /* Home */
 #home{
     display: flex;
-    height: 100vh;
+    height: 98vh;
     align-items: center;
 }
 
@@ -203,7 +203,7 @@ input[type=number] {
 /* About */
 #about{
     display: flex;
-    height: 98vh;
+    height: 102vh;
     align-items: center;
 }
 

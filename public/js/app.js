@@ -45,21 +45,6 @@
   const loaderBackdrop = document.querySelector('#loading');
 
 
-// Nav link highlight on click
-$(".navlink").click(function () {
-    $(".navlink").css("font-family", "Geomanist-Book");
-    $(".navlink").css("color", "#707070");
-    $(this).css("font-family", "Geomanist-Medium");
-    $(this).css("color", "#454040");
-  });
-
-// About link highlight on more info btn click
-  $('#more').click(function () {
-    $(".navlink").css("font-family", "Geomanist-Book");
-    $(".navlink").css("color", "#707070");
-    $('.about-link').css("font-family", "Geomanist-Medium");
-    $('.about-link').css("color", "#454040");
-  });
 
 // Reveal Identity form Show, Anonymous Form hide
   $('.reveal').click(function () {
