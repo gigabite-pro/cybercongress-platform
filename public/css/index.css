@@ -53,7 +53,7 @@ input[type=number] {
 }
 
 #loading{
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -69,8 +69,9 @@ input[type=number] {
 #loading .message-box{
     background-color: white;
     color: #454040;
-    font-family: 'Geomanist-Medium';
+    font-family: 'Geomanist-Book';
     padding: 1.5rem;
+    border-radius: 5px;
 }
 
 
