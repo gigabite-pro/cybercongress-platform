@@ -4,6 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const axios = require('axios');
 const nodemailer = require('nodemailer');
+const fast2sms = require('fast-two-sms')
 const mongoose = require('mongoose');
 const Report = require('./models/report');
 require('dotenv').config();
@@ -176,8 +177,20 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                             if (error) {
                             console.log(error);
                             } else {
-                            console.log('Email sent: ' + info.response);
-                            res.render('submit');
+                                console.log('Email sent: ' + info.response);
+                                if(dbPhone != 'Anonymous'){
+                                    var options = {authorization : process.env.FAST_SMS_API_KEY , message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(dbPhone)]} 
+                                    fast2sms.sendMessage(options) 
+                                    .then(()=>{
+                                        console.log('SMS sent')
+                                        res.render('submit')
+                                    }).catch((err)=>{
+                                        console.log(err)
+                                        res.render('error')
+                                    })
+                                }else{
+                                    res.render('submit')
+                                }
                             }
                         });
                         }).catch(err=>{
