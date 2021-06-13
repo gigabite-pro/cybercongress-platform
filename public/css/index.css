@@ -54,6 +54,8 @@ input[type=number] {
 
 #loading{
     display: none;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -62,6 +64,13 @@ input[type=number] {
     left: 0px;
     background-color: rgba(0, 0, 0, 0.281);
     transition: all 0.5s;
+}
+
+#loading .message-box{
+    background-color: white;
+    color: #454040;
+    font-family: 'Geomanist-Medium';
+    padding: 1.5rem;
 }
 
 

@@ -227,7 +227,7 @@ submitBtn.forEach(btn => {
       }
       else{
         formReveal.submit();
-        loaderBackdrop.style.display = 'block';
+        loaderBackdrop.style.display = 'flex';
       }
     }else{
       var radio2Value = document.querySelector('#maintainSecrecy2');
@@ -241,7 +241,7 @@ submitBtn.forEach(btn => {
       }
       else{
         formAnon.submit();
-        loaderBackdrop.style.display = 'block';
+        loaderBackdrop.style.display = 'flex';
       }
     }
   });
