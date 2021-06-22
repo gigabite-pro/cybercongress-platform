@@ -230,8 +230,9 @@ input[type=number] {
     transform: translate(2%,7%);
     width: 96%;
     height: 13rem;
-    background: url("https://www.amity.edu/ais/gurgaon46/assets/images/2017-18/happenings/aisg46_018.jpg");
-    background-position-y: -12rem;
+    background: url("https://cdn.discordapp.com/attachments/644444918554820608/856973822670667806/image0.jpg");
+    background-position-y: -18rem;
+    background-size: cover;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 14px;
 }
@@ -480,8 +481,10 @@ small{
 /* Alumni */
 #alumni{
     height: 108vh;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .responsive-card{
@@ -555,8 +558,8 @@ small{
     }
 
     .about-inner-illus{
-        background: url('https://cdn.discordapp.com/attachments/832263339526455357/842626022419464212/WhatsApp_Image_2021-04-20_at_8.34.31_PM.jpeg');
-        background-size: contain;
+        background: url('https://cdn.discordapp.com/attachments/644444918554820608/856973822670667806/image0.jpg');
+        background-size: cover;
     }
 
     #report{
