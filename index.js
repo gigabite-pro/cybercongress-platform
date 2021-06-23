@@ -209,15 +209,12 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
 });
 app.post('/newsletter', (req,res)=>{
     const email = req.body.email;
-    console.log(email);
             newNewsletter = new Newsletter({
                 "email": email
             });
             newNewsletter.save()
             .then((newsletter)=>{
-                console.log(email);
                 console.log('New SignUp');
-                console.log(newsletter);
                 res.redirect('/');
             })
             .catch((err)=>{

@@ -667,6 +667,6 @@ small{
         padding-right: 1rem;
     }
 }
-.btn-newsletter{
-    text-align: left;
+.form-newsletter{
+    width: 30vw;
 }
