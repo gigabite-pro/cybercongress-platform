@@ -207,89 +207,23 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
         }, 9000);
     }
 });
-app.post('/postReport', (req,res)=>{
-    var email = req.body.email
-    // Getting form data
-    var ip = req.ip;
-
-    
-        setTimeout(() => {
-    
+app.post('/newsletter', (req,res)=>{
+    const email = req.body.email;
+    console.log(email);
             newNewsletter = new Newsletter({
                 "email": email
-            })
-            newReport.save()
-            .then((report)=>{
-                const id = report.id;
-                Report.findById(id, (err,docs)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    const dbName = docs.name;
-                    const dbReportType = docs.reportType;
-                    const dbPhone = docs.phone;
-                    const dbTypeOfUser = docs.typeOfUser;
-                    const dbMessage = docs.message;
-                    const dbImages = docs.images;
-                    const dbSecrecy = docs.secrecy;
-                    const dbip = docs.ip;
-        
-                    axios.get(`${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
-                    ).then(response => {
-                        console.log(response.data)
-
-                        var mailOptions = {
-                            from: 'cybercongressaisg46@gmail.com',
-                            to: 'cybercongressaisg46@gmail.com',
-                            subject: `Report Type: ${dbReportType}`,
-                            html: `<p>
-                            <strong>User Type: </strong>${dbTypeOfUser} 
-                            <br>
-                            <strong>Name: </strong>${dbName}
-                            <br>
-                            <strong>Phone Number: </strong>${dbPhone}
-                            <br>
-                            <strong>Message: </strong>${dbMessage}
-                            <br>
-                            <strong>Images: </strong>${dbImages}
-                            <br>
-                            <strong>Maintain Secrecy: </strong>${dbSecrecy}
-                            <br>
-                            <strong>IP Address: </strong>${dbip}
-                        </p>`
-                        };
-    
-                        transporter.sendMail(mailOptions, function(error, info){
-                            if (error) {
-                            console.log(error);
-                            } else {
-                                console.log('Email sent: ' + info.response);
-                                if(dbPhone != 'Anonymous'){
-                                    var options = {authorization : process.env.FAST_SMS_API_KEY , message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(dbPhone)]} 
-                                    fast2sms.sendMessage(options) 
-                                    .then(()=>{
-                                        console.log('SMS sent')
-                                        res.render('submit')
-                                    }).catch((err)=>{
-                                        console.log(err)
-                                        res.render('error')
-                                    })
-                                }else{
-                                    res.render('submit')
-                                }
-                            }
-                        });
-                        }).catch(err=>{
-                            console.log(err);
-                            res.render('error');
-                        });
-                })
+            });
+            newNewsletter.save()
+            .then((newsletter)=>{
+                console.log(email);
+                console.log('New SignUp');
+                console.log(newsletter);
+                res.redirect('/');
             })
             .catch((err)=>{
                 console.log(err);
                 res.render('error');
-            });
-        }, 9000);
+            }); 
     
 });
 
