@@ -458,6 +458,10 @@ small{
     font-family: 'Geomanist-Medium';
     color: #454040;
 }
+.mail-head{
+    font-family: 'Geomanist-Medium';
+    color: #454040;
+}
 
 .students-head{
     margin-top: 8rem;
@@ -666,7 +670,66 @@ small{
     .phone-nav-item{
         padding-right: 1rem;
     }
+    #newsletter{
+        margin-top: 50rem;
+        margin-bottom: 0rem;
+    }
+    .mail-head{
+        margin-top: 1rem;
+    }
+    .news-out{
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .newsletter-input{
+
+    }
+    #img-news{
+        transform: scale(20rem);
+    }
 }
-.form-newsletter{
-    width: 30vw;
+
+
+.news-out{
+    background-color: white;
+    border-radius: 0.5em;
+    box-shadow: 1em 1em;
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    width:80%;
+    margin-bottom: 10rem;
 }
+
+
+
+.news-in{
+    background-color: #F1F1F1;
+    border-radius: 0.5em;
+    height: 100%;
+}
+
+#img-news {
+    background-image: url("/assets/news.jpeg");
+    background-size: cover; 
+    background-position: center;
+    
+    height: 100%;
+    opacity: 40%;
+    background-repeat: no-repeat;
+    transform: scale(10rem);
+}
+
+.news-content{
+    padding: 3em;
+    text-align: left;
+    height: 100%;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+} 
+.newsletter-input{
+    width: 30em;
+    height: 3em;
+}
+
+
