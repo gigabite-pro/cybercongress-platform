@@ -523,6 +523,7 @@ small{
 .insta-illus-small-outer{
     height: 11rem;
     width: 11rem;
+    margin: auto;
     box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
     border-radius: 14px;
     display: flex;
