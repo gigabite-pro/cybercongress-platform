@@ -480,7 +480,7 @@ small{
 
 /* Alumni */
 #alumni{
-    height: 108vh;
+    height: 95vh;
     margin-top: 2rem;
     display: flex;
     justify-content: center;
@@ -489,6 +489,84 @@ small{
 
 .responsive-card{
     height: 8.3rem;
+}
+
+#insta{
+    height: 108vh;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.insta-illus-outer{
+    height: 22rem;
+    width: 22rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, 0.062);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insta-illus-inner{
+    height: 20rem;
+    width: 20rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, 0.062);
+    border-radius: 14px;
+}
+
+.right-insta-posts{
+    margin-left: -2rem;
+}
+
+.insta-illus-small-outer{
+    height: 11rem;
+    width: 11rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insta-illus-small-inner{
+    height: 9rem;
+    width: 9rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+.insta-illus-small-outer:hover{
+    cursor: pointer;
+}
+
+.insta-button-outer{
+    width: 100%;
+    height: 5rem;
+}
+
+.insta-button-inner{
+    width: 97%;
+    height: 3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Geomanist-Book';
+    font-size: 1.2rem;
+    color: #707070;
+    background-color: #F1F1F1;
+}
+
+.insta-button-inner:hover{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+.follow-us{
+    margin-top: 0.7rem;
 }
 
 
@@ -619,6 +697,50 @@ small{
     #alumni{
         margin-top: 60rem;
         margin-bottom: 1rem;
+    }
+
+    #instagramPage{
+        margin-top: 63rem;
+    }
+
+    .right-insta-posts{
+        margin-left: 0rem;
+    }
+
+    .insta-illus-outer{
+        height: 16rem;
+        width: 16rem;
+        margin: auto;
+    }
+
+    .insta-illus-inner{
+        height: 14rem;
+        width: 14rem;
+    }
+
+    .insta-illus-small-outer{
+        height: 9rem;
+        width: 9rem;
+    }
+
+    .insta-illus-small-inner{
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .insta-button-outer{
+        height: 5rem;
+        width: 100%;
+    }
+
+    .insta-button-inner{
+        height: 3rem;
+        width: 90%;
+    }
+
+    .follow-us{
+        margin-top: 1.1rem;
+        font-size: 0.75rem;
     }
 
     .gursimran-card{
