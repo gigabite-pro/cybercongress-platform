@@ -501,6 +501,7 @@ small{
 .insta-illus-outer{
     height: 22rem;
     width: 22rem;
+    margin: auto;
     box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, 0.062);
     border-radius: 14px;
     display: flex;
@@ -699,8 +700,8 @@ a{
         margin-bottom: 1rem;
     }
 
-    #instagramPage{
-        margin-top: 63rem;
+    #insta{
+        margin-top: 35rem;
     }
 
     .right-insta-posts{
@@ -790,5 +791,51 @@ a{
 
     .phone-nav-item{
         padding-right: 1rem;
+    }
+}
+
+@media(max-width: 500px){
+    #insta{
+        margin-top: 45rem;
+    }
+
+    .right-insta-posts{
+        margin-left: 0rem;
+    }
+
+    .insta-illus-outer{
+        height: 16rem;
+        width: 16rem;
+        margin: auto;
+    }
+
+    .insta-illus-inner{
+        height: 14rem;
+        width: 14rem;
+    }
+
+    .insta-illus-small-outer{
+        height: 7.5rem;
+        width: 7.5rem;
+    }
+
+    .insta-illus-small-inner{
+        height: 5.5rem;
+        width: 5.5rem;
+    }
+
+    .insta-button-outer{
+        height: 5rem;
+        width: 100%;
+    }
+
+    .insta-button-inner{
+        height: 3rem;
+        width: 90%;
+    }
+
+    .follow-us{
+        margin-top: 1.1rem;
+        font-size: 0.6rem;
     }
 }
