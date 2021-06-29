@@ -7,6 +7,9 @@ const nodemailer = require('nodemailer');
 const fast2sms = require('fast-two-sms')
 const mongoose = require('mongoose');
 const Report = require('./models/report');
+const Newsletter = require('./models/newsletter');
+const fs = require('fs');
+const readline = require('readline');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
@@ -18,8 +21,11 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.enable('trust proxy')
 
+
 //DB Config
 const db = require('./config/keys').MongoURI;
+const { response } = require('express');
+
 
 //Connect DB
 mongoose.connect(db, {useNewUrlParser: true,useUnifiedTopology: true})
@@ -222,6 +228,25 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
             });
         }, 9000);
     }
+});
+app.post('/newsletter', (req,res)=>{
+    const email = req.body.email;
+            newNewsletter = new Newsletter({
+                "email": email
+            });
+            newNewsletter.save()
+            .then((newsletter)=>{
+                console.log('New SignUp');
+                axios.get(`${process.env.DOC_API}?email=${email}`).then(response => {
+                    console.log('email added');
+                    res.redirect('/');
+                });
+            })
+            .catch((err)=>{
+                console.log(err);
+                res.render('error');
+            }); 
+    
 });
 
 
