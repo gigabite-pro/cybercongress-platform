@@ -125,7 +125,7 @@ input[type=number] {
 }
 
 .nav-items-bar-2{
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
 
 #left-links{
@@ -230,8 +230,9 @@ input[type=number] {
     transform: translate(2%,7%);
     width: 96%;
     height: 13rem;
-    background: url("https://www.amity.edu/ais/gurgaon46/assets/images/2017-18/happenings/aisg46_018.jpg");
-    background-position-y: -12rem;
+    background: url("https://cdn.discordapp.com/attachments/644444918554820608/856973822670667806/image0.jpg");
+    background-position-y: -18rem;
+    background-size: cover;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 14px;
 }
@@ -483,13 +484,95 @@ small{
 
 /* Alumni */
 #alumni{
-    height: 108vh;
+    height: 95vh;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .responsive-card{
     height: 8.3rem;
+}
+
+#insta{
+    height: 108vh;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.insta-illus-outer{
+    height: 22rem;
+    width: 22rem;
+    margin: auto;
+    box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, 0.062);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insta-illus-inner{
+    height: 20rem;
+    width: 20rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, 0.062);
+    border-radius: 14px;
+}
+
+.right-insta-posts{
+    margin-left: -2rem;
+}
+
+.insta-illus-small-outer{
+    height: 11rem;
+    width: 11rem;
+    margin: auto;
+    box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insta-illus-small-inner{
+    height: 9rem;
+    width: 9rem;
+    box-shadow: 0 .5rem 0.5rem rgba(0,0,0,.15);
+    border-radius: 14px;
+}
+
+.insta-illus-small-outer:hover{
+    cursor: pointer;
+}
+
+.insta-button-outer{
+    width: 100%;
+    height: 5rem;
+}
+
+.insta-button-inner{
+    width: 97%;
+    height: 3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Geomanist-Book';
+    font-size: 1.2rem;
+    color: #707070;
+    background-color: #F1F1F1;
+}
+
+.insta-button-inner:hover{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+.follow-us{
+    margin-top: 0.7rem;
 }
 
 
@@ -559,8 +642,8 @@ small{
     }
 
     .about-inner-illus{
-        background: url('https://cdn.discordapp.com/attachments/832263339526455357/842626022419464212/WhatsApp_Image_2021-04-20_at_8.34.31_PM.jpeg');
-        background-size: contain;
+        background: url('https://cdn.discordapp.com/attachments/644444918554820608/856973822670667806/image0.jpg');
+        background-size: cover;
     }
 
     #report{
@@ -601,7 +684,7 @@ small{
     }
 
     #team{
-        margin-top: 31rem;
+        margin-top: 40rem;
     }
 
     .illus-outer{
@@ -618,8 +701,52 @@ small{
     }
 
     #alumni{
-        margin-top: 18rem;
+        margin-top: 60rem;
         margin-bottom: 1rem;
+    }
+
+    #insta{
+        margin-top: 35rem;
+    }
+
+    .right-insta-posts{
+        margin-left: 0rem;
+    }
+
+    .insta-illus-outer{
+        height: 16rem;
+        width: 16rem;
+        margin: auto;
+    }
+
+    .insta-illus-inner{
+        height: 14rem;
+        width: 14rem;
+    }
+
+    .insta-illus-small-outer{
+        height: 9rem;
+        width: 9rem;
+    }
+
+    .insta-illus-small-inner{
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .insta-button-outer{
+        height: 5rem;
+        width: 100%;
+    }
+
+    .insta-button-inner{
+        height: 3rem;
+        width: 90%;
+    }
+
+    .follow-us{
+        margin-top: 1.1rem;
+        font-size: 0.75rem;
     }
 
     .gursimran-card{
@@ -670,6 +797,7 @@ small{
     .phone-nav-item{
         padding-right: 1rem;
     }
+
     #newsletter{
         margin-top: 50rem;
         margin-bottom: 0rem;
@@ -732,4 +860,52 @@ small{
     height: 3em;
 }
 
+
+
+
+@media(max-width: 500px){
+    #insta{
+        margin-top: 45rem;
+    }
+
+    .right-insta-posts{
+        margin-left: 0rem;
+    }
+
+    .insta-illus-outer{
+        height: 16rem;
+        width: 16rem;
+        margin: auto;
+    }
+
+    .insta-illus-inner{
+        height: 14rem;
+        width: 14rem;
+    }
+
+    .insta-illus-small-outer{
+        height: 7.5rem;
+        width: 7.5rem;
+    }
+
+    .insta-illus-small-inner{
+        height: 5.5rem;
+        width: 5.5rem;
+    }
+
+    .insta-button-outer{
+        height: 5rem;
+        width: 100%;
+    }
+
+    .insta-button-inner{
+        height: 3rem;
+        width: 90%;
+    }
+
+    .follow-us{
+        margin-top: 1.1rem;
+        font-size: 0.6rem;
+    }
+}
 

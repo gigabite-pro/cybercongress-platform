@@ -84,7 +84,6 @@
     let current = '';
     sections.forEach(section =>{
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
       if(right.scrollTop >= sectionTop){
         current = section.getAttribute('id');
       }

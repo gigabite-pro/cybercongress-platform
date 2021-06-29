@@ -53,6 +53,9 @@
               <a class="nav-link" href="#alumni">Alumni</a>
             </li>
             <li class="nav-item phone-nav-item">
+              <a class="nav-link" href="#insta">Instagram</a>
+            </li>
+            <li class="nav-item phone-nav-item">
               <a class="nav-link" href="mailto:cybercongressaisg46@gmail.com">Email</a>
             </li>
             <li class="nav-item phone-nav-item">
@@ -112,14 +115,17 @@
             <a href="#alumni" class="navlink alumni" id="left-links">Alumni</a>
           </div>
           <div class="col-12 nav-item">
+
             <a href="#newsletter" class="navlink alumni" id="left-links">Newsletter</a>
           </div>
           <div class="col-12 nav-item">
             <a href="mailto:cybercongressaisg46@gmail.com" class="emaillink" id="left-links">Email</a>
           </div>
           <div class="col-12 nav-item">
-            <a href="https://www.instagram.com/cybercongressais46/" target="_blank" class="insta"
-              id="left-links">Instagram</a>
+            <a href="#insta" class="navlink insta" id="left-links">Instagram</a>
+          </div>
+          <div class="col-12 nav-item">
+            <a href="mailto:cybercongressaisg46@gmail.com" class="emaillink" id="left-links">Email</a>
           </div>
         </div>
       </div>
@@ -616,6 +622,14 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-12 col-md-3 mt-md-3 mt-3">
+                  <div class="card">
+                    <div class='card-body'>
+                      <h5 class="card-title"> Riya Dogra </h5>
+                      <p class="card-text"> Core</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <br><br>
               <!-- Teachers -->
@@ -689,7 +703,7 @@
                 <div class="col-12 col-md-3 mt-md-0 mt-3">
                   <div class="card responsive-card">
                     <div class='card-body'>
-                      <h5 class="card-title"> Anurag Pardia </h5>
+                      <h5 class="card-title"> Anurag Parida </h5>
                       <p class="card-text"> Gap Year Student <br>
                         <p class="text-muted"> 2019-20</p>
                     </div>
@@ -752,6 +766,7 @@
             </div>
           </div>
         </div>
+
         <div id="newsletter" class="sections">
           <div class="justify-content-center row">
             <div class="col-10">
@@ -788,6 +803,64 @@
               </div>
             </div>
           </div>
+        </div>
+
+        
+        <!-- Instagram -->
+        <div id="insta" class="sections">
+          <div>
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-12">
+                  <h1 class="home-head">
+                    Instagram Preview
+                  </h1>
+                  <div class="hr"></div>
+                </div>
+              </div>
+              </div>
+              <div class="col-md-10 col-12">
+              <div class="row mt-5 justify-content-center">
+                <div class="col-md-5 mt-2">
+                  <a href='<%- links[0]%>' target="_blank">
+                    <div class="insta-illus-outer">
+                      <div class="insta-illus-inner" style="background: url('<%- images[0] %>'); background-position: center;
+                      background-size: cover;">
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-7 mt-md-2 right-insta-posts">
+                  <div class="row">
+                    <%for (let i = 1; i< images.length; i++) { %>
+                      <div class="col-md-4 col-6 mt-2 mt-md-0">
+                        <a href='<%- links[i]%>' target="_blank">
+                          <div class="insta-illus-small-outer">
+                            <div class="insta-illus-small-inner" style="background: url('<%- images[i] %>'); background-position: center;
+                            background-size: cover;">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-12">
+                  <a href="https://www.instagram.com/cybercongressais46/" target="_blank">
+                    <div class="insta-illus-outer insta-button-outer">
+                      <div class="insta-illus-inner insta-button-inner">
+                        <p class="follow-us">follow us on Instagram: @cybercongressaisg46  <i class="fab fa-instagram"></i></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
