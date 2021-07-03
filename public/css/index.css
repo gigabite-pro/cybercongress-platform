@@ -592,11 +592,14 @@ a{
 }
 
 
-
 .news-in{
     background-color: #F1F1F1;
     border-radius: 0.5em;
     height: 100%;
+}
+.news-btn{
+    margin-right: 0;
+    margin-left:auto;
 }
 
 #img-news {
@@ -604,7 +607,9 @@ a{
     background-size: cover; 
     background-position: center;
     height: 100%;
+    overflow: hidden;
     opacity: 40%;
+    margin-left: 0px;
     background-repeat: no-repeat;
     transform: scale(10rem);
 }
@@ -617,7 +622,7 @@ a{
     margin-bottom: 1.5em;
 } 
 .newsletter-input{
-    width: 30em;
+    width: 100%;
     height: 3em;
 }
 
@@ -857,6 +862,20 @@ a{
     #img-news{
         transform: scale(20rem);
     }
+    .newsletter-input{
+        width:fit-content;
+    }
+    .email-head{
+        font-size: 1em;
+    }
+    .news-btn{
+        margin-right: 0;
+        margin-left: 7.5rem;
+    }
+    #img-news{
+        display: none;
+    }
+    
 }
 
 

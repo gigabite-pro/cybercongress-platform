@@ -557,15 +557,16 @@
           </div>
         </div>
         <!-- Report Page End -->
-        <div id="newsletter" class="sections">
+        <!-- <div id="newsletter" class="sections">
           <div>
-            <div class="justify-content-center row">
-              <div class="col-10">
+            <div class="row justify-content-center">
+              <div class="col-md-10">
                 <div class="qute team-content mb-1">
-                  We have collaborated with Glocal Amitians to bring you a newsletter published started by Amitians for
-                  Amitians. We address relevant social and internet based issues and use this as a platform to voice our
+                  We have collaborated with Glocal Amitians to bring you a newsletter published started by Amitians
+                  for
+                  Amitians. We address relevant social and internet based issues and use this as a platform to voice
+                  our
                   opinions.
-
                 </div>
                 <h3 class="head mail-head students-head" style="margin-left: -0.25rem;">Subscribe to
                   our Newsletter!</h3>
@@ -580,12 +581,12 @@
                         <form action="/newsletter" method="POST" class="form-newsletter">
                           <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" required
                             class="form-control newsletter-input" autocomplete="off" style="margin-bottom: 1em;">
-                          <div class="text-end">
-                            <button type="submit" class="btn button" style="margin-right: 0.5rem;">Submit</button>
+                          <div class="text-end" style="margin-right: -2rem;">
+                            <button type="submit" class="btn button text-end">Submit</button>
                           </div>
                         </form>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4">
                         <div class="news-img" id="img-news">
                         </div>
                       </div>
@@ -595,65 +596,46 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Instagram -->
-        <div id="insta" class="sections">
-          <div>
-            <div class="row justify-content-center">
-              <div class="col-md-10">
-                <div class="row">
-                  <div class="col-12">
-                    <h1 class="home-head">
-                      Instagram Preview
-                    </h1>
-                    <div class="hr"></div>
-                  </div>
-                </div>
+        </div> -->
+        <div id="newsletter" class="sections">
+          <div class="row justify-content-center">
+            <div class='col-md-10'>
+              <div class="qute team-content mb-1">
+                We have collaborated with Glocal Amitians to bring you a newsletter published started by Amitians
+                for
+                Amitians. We address relevant social and internet based issues and use this as a platform to voice
+                our
+                opinions.
               </div>
-              <div class="col-md-10 col-12">
-                <div class="row mt-5 justify-content-center">
-                  <div class="col-md-5 mt-2">
-                    <a href='<%- links[0]%>' target="_blank">
-                      <div class="insta-illus-outer">
-                        <div class="insta-illus-inner" style="background: url('<%- images[0] %>'); background-position: center;
-              background-size: cover;">
+              <h3 class='head mail-head students-head' style="margin-left: -0.25rem;">
+                Subscribe to our Newsletter!
+              </h3>
+              <div class="hr report-hr" style="margin-left: -0.25rem; margin-bottom: 2rem;"></div>
+              <div class="news-out shadow">
+                <div class="news-in justify-content-center">
+                  <div class="row">
+                    <div class="col-8 news-content">
+                      <h4 class="head email-head">Email Address</h4>
+                      <form action="/newsletter" method="POST" class="form-newsletter">
+                        <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" required
+                          class="form-control newsletter-input" autocomplete="off" style="margin-bottom: 1em;">
+                        <div class="text-end news-btn-out">
+                          <button type="submit" class="btn button news-btn">Submit</button>
                         </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-7 mt-md-2 right-insta-posts">
-                    <div class="row">
-                      <%for (let i = 1; i< images.length; i++) { %>
-                      <div class="col-md-4 col-6 mt-2 mt-md-0">
-                        <a href='<%- links[i]%>' target="_blank">
-                          <div class="insta-illus-small-outer">
-                            <div class="insta-illus-small-inner" style="background: url('<%- images[i] %>'); background-position: center;
-                    background-size: cover;">
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                      <% } %>
+                      </form>
                     </div>
-                  </div>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-12">
-                    <a href="https://www.instagram.com/cybercongressais46/" target="_blank">
-                      <div class="insta-illus-outer insta-button-outer">
-                        <div class="insta-illus-inner insta-button-inner">
-                          <p class="follow-us">follow us on Instagram: @cybercongressaisg46 <i
-                              class="fab fa-instagram"></i></p>
-                        </div>
+                    <div class="col-md-4">
+                      <div class="news-img" id="img-news">
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+
         <div id="team" class="sections">
           <div class="row justify-content-center">
             <div class="col-10">

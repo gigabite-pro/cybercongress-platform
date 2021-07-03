@@ -43,24 +43,25 @@ var transporter = nodemailer.createTransport({
   
 
 app.get('/', (req,res)=>{
-    const images = []
-    const links = []
-    axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-    .then( async (response) => {
-        const ids = response.data.data;
-        for(i=0; i < 7; i++){
-            await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-            .then((response)=>{
-                images.push(response.data.media_url);
-                links.push(response.data.permalink);
-            }).catch(err => console.log(err));
-        }
-        res.render('home', {
-            images : images,
-            links : links
-        });
-    })
-    .catch(err => console.log(err));
+    // const images = []
+    // const links = []
+    // axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+    // .then( async (response) => {
+    //     const ids = response.data.data;
+    //     for(i=0; i < 7; i++){
+    //         await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+    //         .then((response)=>{
+    //             images.push(response.data.media_url);
+    //             links.push(response.data.permalink);
+    //         }).catch(err => console.log(err));
+    //     }
+    //     res.render('home', {
+    //         images : images,
+    //         links : links
+    //     });
+    // })
+    // .catch(err => console.log(err));
+    res.render('home');
 });
 
 var upload = multer();
