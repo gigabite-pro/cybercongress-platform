@@ -60,8 +60,7 @@ app.get('/', (req,res)=>{
             links : links
         });
     })
-    .catch(err => console.log(err));
-    res.render('home');
+    .catch(err => res.render('error'));
 });
 
 var upload = multer();
