@@ -849,9 +849,6 @@ a{
         padding-right: 1rem;
     }
 
-    #newsletter{
-        margin-top: 50rem;
-    }
     .mail-head{
         margin-top: 1rem;
     }
@@ -859,8 +856,8 @@ a{
         margin-top: 1rem;
         width: 100%;
     }
-    #img-news{
-        transform: scale(20rem);
+    #newsletter{
+        margin-top:5rem;
     }
     .newsletter-input{
         width:fit-content;

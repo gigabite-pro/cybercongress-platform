@@ -43,6 +43,7 @@
   const formAnon = document.querySelector('.form-anonymous')
   const submitBtn = document.querySelectorAll('#submit-btn');
   const loaderBackdrop = document.querySelector('#loading');
+  const submit2 = document.querySelectorAll('#submit-news-btn')
 
 
 
@@ -193,6 +194,12 @@ illustrationBox.addEventListener('mouseover', ()=>{
     }, time[i]);
   }
 });
+
+submit2.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    loaderBackdrop.style.display = "flex";
+  })
+})
 
  // Loading Backdrop after submit btn click and form validation
 submitBtn.forEach(btn => {
