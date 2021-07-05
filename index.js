@@ -240,6 +240,9 @@ app.post('/newsletter', (req,res)=>{
                 axios.get(`${process.env.DOC_API}?email=${email}`).then(response => {
                     console.log('email added');
                     res.redirect('/');
+                }).catch(err => {
+                    console.log(err)
+                    res.render("error");
                 });
             })
             .catch((err)=>{
