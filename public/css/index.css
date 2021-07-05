@@ -680,7 +680,7 @@ a{
     }
 
     #about{
-        margin-top: 10rem;
+        margin-top: 20rem;
     }
 
     .about-head{
@@ -698,7 +698,7 @@ a{
     }
 
     #report{
-        margin-top: 25rem;
+        margin-top: 20rem;
     }
 
     .report-content{
@@ -857,7 +857,7 @@ a{
         width: 100%;
     }
     #newsletter{
-        margin-top:5rem;
+        margin-top:15rem;
     }
     .newsletter-input{
         width:fit-content;
@@ -880,7 +880,7 @@ a{
 
 @media(max-width: 500px){
     #insta{
-        margin-top: 45rem;
+        margin-top: 20rem;
     }
 
     .right-insta-posts{
