@@ -465,7 +465,7 @@ small{
 }
 
 .students-head{
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
 }
 
 .underlined::after {
