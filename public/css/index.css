@@ -573,6 +573,7 @@ a{
 
 .follow-us{
     margin-top: 0.7rem;
+    font-size: 1.2em;
 }
 
 .news-out{
@@ -797,7 +798,7 @@ a{
 
     .follow-us{
         margin-top: 1.1rem;
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
 
     .gursimran-card{
@@ -876,7 +877,9 @@ a{
 }
 
 
-
+.follow-us-mobile {
+    display:none;
+}
 
 @media(max-width: 500px){
     #insta{
@@ -919,8 +922,12 @@ a{
     }
 
     .follow-us{
-        margin-top: 1.1rem;
-        font-size: 0.6rem;
+        display: none;
+    }
+    .follow-us-mobile{
+        margin-top: 0.7rem;
+        font-size: 1.3rem;
+        display: block;
     }
 }
 
