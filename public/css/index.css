@@ -860,15 +860,12 @@ a{
     #newsletter{
         margin-top:15rem;
     }
-    .newsletter-input{
-        width:fit-content;
-    }
     .email-head{
         font-size: 1em;
     }
     .news-btn{
         margin-right: 0;
-        margin-left: 7.5rem;
+        margin-left: auto;
     }
     #img-news{
         display: none;
