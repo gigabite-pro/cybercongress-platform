@@ -44,19 +44,19 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item phone-nav-item">
-              <a class="nav-link" href="#report">Report</a>
+              <a class="nav-link" href="#report2">Report</a>
             </li>
             <li class="nav-item phone-nav-item">
-              <a class="nav-link" href="#newsletter">Newsletter</a>
+              <a class="nav-link" href="#news2">Newsletter</a>
             </li>
             <li class="nav-item phone-nav-item">
               <a class="nav-link" href="#insta">Instagram</a>
             </li>
             <li class="nav-item phone-nav-item">
-              <a class="nav-link" href="#team">Team</a>
+              <a class="nav-link" href="#team2">Team</a>
             </li>
             <li class="nav-item phone-nav-item">
-              <a class="nav-link" href="#alumni">Alumni</a>
+              <a class="nav-link" href="#alumni2">Alumni</a>
             </li>
             <li class="nav-item phone-nav-item">
               <a class="nav-link" href="mailto:cybercongressaisg46@gmail.com">Email</a>
@@ -418,14 +418,18 @@
         </div>
         <!-- About Page End -->
         <!-- Report Page -->
+        <a id="report2"></a>
         <div id="report" class="sections mt-md-5">
           <div class="row justify-content-center">
             <div class="col-md-10">
               <div class="row">
                 <div class="col-12">
                   <div class="qute team-content">
-                    We understand that speaking up against a cyber crime—especially on a public domain—can be extremely
-                    intimidating; thus, we promise to keep your information private. We also allow you to be completely
+
+                    We understand that speaking up against a cyber crime—especially on a public domain—can be
+                    extremely
+                    intimidating; thus, we promise to keep your information private. We also allow you to be
+                    completely
                     anonymous to us—if you are not ready to reveal your identity yet.
                   </div>
                 </div>
@@ -556,307 +560,315 @@
             </div>
           </div>
         </div>
-
-        <div id="newsletter" class="sections">
-          <div class="row justify-content-center">
-            <div class='col-md-10'>
-              <div class="qute team-content mb-1">
-                We have collaborated with Glocal Amitians to bring you a newsletter published started by Amitians
-                for
-                Amitians. We address relevant social and internet based issues and use this as a platform to voice
-                our
-                opinions.
-              </div>
-              <h3 class='head mail-head students-head'
-                style="margin-left: -0.25rem; padding-top:0.8em; margin-top:2rem;">
-                Subscribe to our Newsletter!
-              </h3>
-              <div class="hr report-hr" style="margin-left: -0.25rem; margin-bottom: 2rem;"></div>
-              <div class="news-out shadow">
-                <div class="news-in justify-content-center">
-                  <div class="row">
-                    <div class="col-8 news-content">
-                      <h4 class="head email-head">Email Address</h4>
-                      <form action="/newsletter" method="POST" class="form-newsletter">
-                        <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" required
-                          class="form-control newsletter-input" autocomplete="off" style="margin-bottom: 1em;">
-                        <div class="text-end news-btn-out">
-                          <button type="submit" class="btn button news-btn" id="submit-news-btn">Submit</button>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="news-img" id="img-news">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Instagram -->
-        <div id="insta" class="sections">
-          <div>
+        <a id="news2">
+          <div id="newsletter" class="sections">
             <div class="row justify-content-center">
-              <div class="col-md-10">
-                <div class="row">
-                  <div class="col-12">
-                    <h1 class="home-head">
-                      Instagram Preview
-                    </h1>
-                    <div class="hr"></div>
-                  </div>
+              <div class='col-md-10'>
+                <div class="qute team-content mb-1">
+                  We have collaborated with Glocal Amitians to bring you a newsletter published started by Amitians
+                  for
+                  Amitians. We address relevant social and internet based issues and use this as a platform to voice
+                  our
+                  opinions.
                 </div>
-              </div>
-              <div class="col-md-10 col-12">
-                <div class="row mt-5 justify-content-center">
-                  <div class="col-md-5 mt-2">
-                    <a href='<%- links[0]%>' target="_blank">
-                      <div class="insta-illus-outer">
-                        <div class="insta-illus-inner" style="background: url('<%- images[0] %>'); background-position: center;
-              background-size: cover;">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-md-7 mt-md-2 right-insta-posts">
+                <h3 class='head mail-head students-head'
+                  style="margin-left: -0.25rem; padding-top:0.8em; margin-top:2rem;">
+                  Subscribe to our Newsletter!
+                </h3>
+                <div class="hr report-hr" style="margin-left: -0.25rem; margin-bottom: 2rem;"></div>
+                <div class="news-out shadow">
+                  <div class="news-in justify-content-center">
                     <div class="row">
-                      <%for (let i = 1; i< images.length; i++) { %>
-                      <div class="col-md-4 col-6 mt-2 mt-md-0">
-                        <a href='<%- links[i]%>' target="_blank">
-                          <div class="insta-illus-small-outer">
-                            <div class="insta-illus-small-inner" style="background: url('<%- images[i] %>'); background-position: center;
-                      background-size: cover;">
+                      <div class="col-md-8 col-12 news-content">
+                        <h4 class="head email-head">Email Address</h4>
+                        <form action="/newsletter" method="POST" class="form-newsletter">
+                          <div class="row">
+                            <div class="col-12">
+                              <input type="text" name="email" id="email" placeholder="johndoe@gmail.com" required
+                                class="form-control newsletter-input email" autocomplete="off"
+                                style="margin-bottom: 1em;">
+                              <div class="text-end news-btn-out">
+                                <button type="submit" class="btn button news-btn" id="submit-news-btn">Submit</button>
+                              </div>
                             </div>
                           </div>
-                        </a>
+                        </form>
                       </div>
-                      <% } %>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-12">
-                    <a href="https://www.instagram.com/cybercongressais46/" target="_blank">
-                      <div class="insta-illus-outer insta-button-outer">
-                        <div class="insta-illus-inner insta-button-inner">
-                          <p class="follow-us">follow us on Instagram: @cybercongressaisg46 <i
-                              class="fab fa-instagram"></i></p>
-                          <p class="follow-us-mobile">@cybercongressaisg46 <i class="fab fa-instagram"></i></p>
+                      <div class="col-md-4">
+                        <div class="news-img" id="img-news">
                         </div>
                       </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="team" class="sections">
-          <div class="row justify-content-center">
-            <div class="col-10">
-              <div class="qute team-content  mb-5">
-                We are working day and night to create a safer digital environment for our students and faculty. If you
-                think you have an aptitude for cyber security, and want to join our amazing team, please get in touch
-                with our teachers.
-              </div>
-              <!-- Students -->
-              <h3 class="head underlined students-head"> Students </h3>
-              <br>
-              <div class="row">
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Rachit Gupta </h5>
-                      <p class="card-text"> President </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Vaibhav Sharma </h5>
-                      <p class="card-text"> Vice-President </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Aayan Agarwal </h5>
-                      <p class="card-text"> Joint Secretary </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Amish Mamtani </h5>
-                      <p class="card-text"> Joint Secretary </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-3 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Aarushi Singh </h5>
-                      <p class="card-text"> Core</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-3 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Advika Asthana </h5>
-                      <p class="card-text"> Core</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-3 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Riya Dogra </h5>
-                      <p class="card-text"> Core</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br><br>
-              <!-- Teachers -->
-              <h3 class="head underlined"> Teachers </h3>
-              <br>
-              <div class="row">
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Chanchal Dhingra </h5>
-                      <p class="card-text">
-                        Head of Department
-                      </p>
-                      <p class="card-text ph">
-                        +91 92120 80074
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Manisha Sharma </h5>
-                      <p class="card-text">
-                        TGT IT
-                      </p>
-                      <p class="card-text ph">
-                        +91 98688 51136
-                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Alumni -->
-        <div id="alumni" class="sections">
-          <div class="row justify-content-center">
-            <div class="col-10">
-              <div class="qute team-content  mb-5">
-                Our alumni have been extremely active in the field of technology and are currently studying STEM at
-                renowned universities from all across the globe. Here are the people who established the cyber congress
-                and have led the way since.
-              </div>
-              <!-- Students -->
-              <h3 class="head underlined students-head"> Alumni </h3>
-              <br>
-              <div class="row">
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Laxya Pahuja</h5>
-                      <p class="card-text"> Outgoing Batch <br>
-                        <p class="text-muted"> 2020-21</p>
-                      </p>
+          <!-- Instagram -->
+          <div id="insta" class="sections">
+            <div>
+              <div class="row justify-content-center">
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-12">
+                      <h1 class="home-head">
+                        Instagram Preview
+                      </h1>
+                      <div class="hr"></div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Ribhav Sharma </h5>
-                      <p class="card-text"> Outgoing Batch <br>
-                        <p class="text-muted">2020-21</p>
-                      </p>
+                <div class="col-md-10 col-12">
+                  <div class="row mt-5 justify-content-center">
+                    <div class="col-md-5 mt-2">
+                      <a href='<%- links[0]%>' target="_blank">
+                        <div class="insta-illus-outer">
+                          <div class="insta-illus-inner" style="background: url('<%- images[0] %>'); background-position: center;
+                background-size: cover;">
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-7 mt-md-2 right-insta-posts">
+                      <div class="row">
+                        <%for (let i = 1; i< images.length; i++) { %>
+                        <div class="col-md-4 col-6 mt-2 mt-md-0">
+                          <a href='<%- links[i]%>' target="_blank">
+                            <div class="insta-illus-small-outer">
+                              <div class="insta-illus-small-inner" style="background: url('<%- images[i] %>'); background-position: center;
+                        background-size: cover;">
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <% } %>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Anurag Parida </h5>
-                      <p class="card-text"> Gap Year Student <br>
-                        <p class="text-muted"> 2019-20</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Sarthak Singhal </h5>
-                      <p class="card-text"> Student at HKUST <br>
-                        <p class="text-muted">2019-20 </p>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br><br>
-              <div class="row">
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Padam Chopra </h5>
-                      <p class="card-text"> Student at UWaterloo <br>
-                        <p class="text-muted"> 2018-19 </p>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Aryaman Agarwal </h5>
-                      <p class="card-text"> Student at UMass Amherst <br>
-                        <p class="text-muted">2018-19</p>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Ashwin Tewary </h5>
-                      <p class="card-text"> Student at USydney <br>
-                        <p class="text-muted">2017-18</p>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-3 mt-md-0 mt-3">
-                  <div class="card gursimran-card responsive-card">
-                    <div class='card-body'>
-                      <h5 class="card-title"> Gursimran Singh </h5>
-                      <p class="card-text"> Student at Georgia Tech <br>
-                        <p class="text-muted">2017-18</p>
-                      </p>
+                  <div class="row mt-4">
+                    <div class="col-12">
+                      <a href="https://www.instagram.com/cybercongressais46/" target="_blank">
+                        <div class="insta-illus-outer insta-button-outer">
+                          <div class="insta-illus-inner insta-button-inner">
+                            <p class="follow-us">follow us on Instagram: @cybercongressaisg46 <i
+                                class="fab fa-instagram"></i></p>
+                            <p class="follow-us-mobile">@cybercongressaisg46 <i class="fab fa-instagram"></i></p>
+                          </div>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <a id="team2"></a>
+          <div id="team" class="sections">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <div class="qute team-content  mb-5">
+                  We are working day and night to create a safer digital environment for our students and faculty. If
+                  you
+                  think you have an aptitude for cyber security, and want to join our amazing team, please get in touch
+                  with our teachers.
+                </div>
+                <!-- Students -->
+                <h3 class="head underlined students-head"> Students </h3>
+                <br>
+                <div class="row">
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Rachit Gupta </h5>
+                        <p class="card-text"> President </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Vaibhav Sharma </h5>
+                        <p class="card-text"> Vice-President </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Aayan Agarwal </h5>
+                        <p class="card-text"> Joint Secretary </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Amish Mamtani </h5>
+                        <p class="card-text"> Joint Secretary </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-3 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Aarushi Singh </h5>
+                        <p class="card-text"> Core</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-3 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Advika Asthana </h5>
+                        <p class="card-text"> Core</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-3 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Riya Dogra </h5>
+                        <p class="card-text"> Core</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br><br>
+                <!-- Teachers -->
+                <h3 class="head underlined"> Teachers </h3>
+                <br>
+                <div class="row">
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Chanchal Dhingra </h5>
+                        <p class="card-text">
+                          Head of Department
+                        </p>
+                        <p class="card-text ph">
+                          +91 92120 80074
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Manisha Sharma </h5>
+                        <p class="card-text">
+                          TGT IT
+                        </p>
+                        <p class="card-text ph">
+                          +91 98688 51136
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a id="alumni2"></a>
+          <!-- Alumni -->
+          <div id="alumni" class="sections">
+            <div class="row justify-content-center">
+              <div class="col-10">
+                <div class="qute team-content  mb-5">
+                  Our alumni have been extremely active in the field of technology and are currently studying STEM at
+                  renowned universities from all across the globe. Here are the people who established the cyber
+                  congress
+                  and have led the way since.
+                </div>
+                <!-- Students -->
+                <h3 class="head underlined students-head"> Alumni </h3>
+                <br>
+                <div class="row">
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Laxya Pahuja</h5>
+                        <p class="card-text"> Outgoing Batch <br>
+                          <p class="text-muted"> 2020-21</p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Ribhav Sharma </h5>
+                        <p class="card-text"> Outgoing Batch <br>
+                          <p class="text-muted">2020-21</p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Anurag Parida </h5>
+                        <p class="card-text"> Gap Year Student <br>
+                          <p class="text-muted"> 2019-20</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Sarthak Singhal </h5>
+                        <p class="card-text"> Student at HKUST <br>
+                          <p class="text-muted">2019-20 </p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br><br>
+                <div class="row">
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Padam Chopra </h5>
+                        <p class="card-text"> Student at UWaterloo <br>
+                          <p class="text-muted"> 2018-19 </p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Aryaman Agarwal </h5>
+                        <p class="card-text"> Student at UMass Amherst <br>
+                          <p class="text-muted">2018-19</p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Ashwin Tewary </h5>
+                        <p class="card-text"> Student at USydney <br>
+                          <p class="text-muted">2017-18</p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-3 mt-md-0 mt-3">
+                    <div class="card gursimran-card responsive-card">
+                      <div class='card-body'>
+                        <h5 class="card-title"> Gursimran Singh </h5>
+                        <p class="card-text"> Student at Georgia Tech <br>
+                          <p class="text-muted">2017-18</p>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 

@@ -61,6 +61,7 @@ app.get('/', (req,res)=>{
         });
     })
     .catch(err => res.render('error'));
+    // res.render('home');
 });
 
 var upload = multer();

@@ -7,7 +7,8 @@
   // Value assigning to Teacher/Student input
   const radios1 = document.querySelectorAll('.radios');
   var radio1Value = document.querySelector('#typeOfUser');
-
+  // email validation 
+  var email1 = document.getElementById('email');
   // Value assigning to Maintain Secrecy input
   const radios2 = document.querySelectorAll('.radios-2');
   const formReveal = document.querySelector('.form-reveal');
@@ -43,7 +44,7 @@
   const formAnon = document.querySelector('.form-anonymous')
   const submitBtn = document.querySelectorAll('#submit-btn');
   const loaderBackdrop = document.querySelector('#loading');
-  const submit2 = document.querySelectorAll('#submit-news-btn')
+  const submit2 = document.getElementById("submit-news-btn");
 
 
 
@@ -195,11 +196,15 @@ illustrationBox.addEventListener('mouseover', ()=>{
   }
 });
 
-submit2.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    loaderBackdrop.style.display = "flex";
+  submit2.addEventListener('click', (e) => {
+    if (email1.value.includes("@")==false){
+      alert('Please enter a valid email');
+      e.preventDefault();
+    } else {
+      loaderBackdrop.style.display = "flex";
+    }
   })
-})
+
 
  // Loading Backdrop after submit btn click and form validation
 submitBtn.forEach(btn => {
