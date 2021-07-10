@@ -605,7 +605,63 @@
             </div>
           </div>
           <!-- Instagram -->
-
+          <div id="insta" class="sections">
+            <div>
+              <div class="row justify-content-center">
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-12">
+                      <h1 class="home-head">
+                        Instagram Preview
+                      </h1>
+                      <div class="hr"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10 col-12">
+                  <div class="row mt-5 justify-content-center">
+                    <div class="col-md-5 mt-2">
+                      <a href='<%- links[0]%>' target="_blank">
+                        <div class="insta-illus-outer">
+                          <div class="insta-illus-inner" style="background: url('<%- images[0] %>'); background-position: center;
+                background-size: cover;">
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-7 mt-md-2 right-insta-posts">
+                      <div class="row">
+                        <%for (let i = 1; i< images.length; i++) { %>
+                        <div class="col-md-4 col-6 mt-2 mt-md-0">
+                          <a href='<%- links[i]%>' target="_blank">
+                            <div class="insta-illus-small-outer">
+                              <div class="insta-illus-small-inner" style="background: url('<%- images[i] %>'); background-position: center;
+                        background-size: cover;">
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <% } %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col-12">
+                      <a href="https://www.instagram.com/cybercongressais46/" target="_blank">
+                        <div class="insta-illus-outer insta-button-outer">
+                          <div class="insta-illus-inner insta-button-inner">
+                            <p class="follow-us">follow us on Instagram: @cybercongressaisg46 <i
+                                class="fab fa-instagram"></i></p>
+                            <p class="follow-us-mobile">@cybercongressaisg46 <i class="fab fa-instagram"></i></p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <a id="team2"></a>
           <div id="team" class="sections">
             <div class="row justify-content-center">
