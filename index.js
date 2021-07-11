@@ -8,8 +8,6 @@ const fast2sms = require('fast-two-sms')
 const mongoose = require('mongoose');
 const Report = require('./models/report');
 const Newsletter = require('./models/newsletter');
-const fs = require('fs');
-const readline = require('readline');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
@@ -45,7 +43,7 @@ var transporter = nodemailer.createTransport({
 app.get('/', (req,res)=>{
     const images = []
     const links = []
-    var ip = req.ip;
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress; 
     axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
     .then( async (response) => {
         const ids = response.data.data;
