@@ -60,7 +60,11 @@ app.get('/', (req,res)=>{
             links : links
         });
     })
-    .catch(err => res.render('error'));
+    .catch(err =>
+         res.render('home',{
+             images: null,
+             links: null,
+         }));
     // res.render('home');
 });
 
