@@ -43,8 +43,9 @@ var transporter = nodemailer.createTransport({
 app.get('/', (req,res)=>{
     const images = []
     const links = []
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress; 
-    axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    if(ip != process.env.badIP){
+        axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
     .then( async (response) => {
         const ids = response.data.data;
         for(i=0; i < 7; i++){
@@ -67,6 +68,7 @@ app.get('/', (req,res)=>{
          })
          console.log(ip) 
         });
+    } 
 });
 
 var upload = multer();
