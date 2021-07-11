@@ -45,6 +45,7 @@ var transporter = nodemailer.createTransport({
 app.get('/', (req,res)=>{
     const images = []
     const links = []
+    var ip = req.ip;
     axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
     .then( async (response) => {
         const ids = response.data.data;
@@ -59,13 +60,15 @@ app.get('/', (req,res)=>{
             images : images,
             links : links
         });
+        console.log(ip)
     })
-    .catch(err =>
+    .catch(err => {
          res.render('home',{
              images: null,
              links: null,
-         }));
-    // res.render('home');
+         })
+         console.log(ip) 
+        });
 });
 
 var upload = multer();

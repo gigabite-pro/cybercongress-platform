@@ -464,9 +464,6 @@ small{
     color: #454040;
 }
 
-.students-head{
-    /* margin-top: 8rem; */
-}
 
 .underlined::after {
     content: "";
