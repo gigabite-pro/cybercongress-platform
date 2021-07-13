@@ -106,7 +106,6 @@ app.post('/reCaptcha', (req,res)=>{
 
       request(verifyUrl, (err, response, body)=>{
         body = JSON.parse(body);
-        console.log(body)
         if(body.success !== undefined && !body.success){
             res.json(body)
         }else{
