@@ -3,9 +3,11 @@ const app = express();
 const path = require('path');
 const multer = require('multer');
 const axios = require('axios');
+const request = require('request');
 const nodemailer = require('nodemailer');
 const fast2sms = require('fast-two-sms')
 const mongoose = require('mongoose');
+const session = require('express-session');
 const Report = require('./models/report');
 const Newsletter = require('./models/newsletter');
 require('dotenv').config();
@@ -17,7 +19,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.enable('trust proxy')
+app.use(session({
+    secret: 'yoyo-honeysingh',
+    resave: false,
+    saveUninitialized: false,
+    name: 'reCaptcha',
+}))
+app.enable('trust proxy');
 
 
 //DB Config
@@ -41,34 +49,72 @@ var transporter = nodemailer.createTransport({
   
 
 app.get('/', (req,res)=>{
-    const images = []
-    const links = []
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    if(ip != process.env.badIP){
+    if(req.session.reCaptcha === true){
+        const images = []
+        const links = []
         axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-    .then( async (response) => {
-        const ids = response.data.data;
-        for(i=0; i < 7; i++){
-            await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-            .then((response)=>{
-                images.push(response.data.media_url);
-                links.push(response.data.permalink);
-            }).catch(err => console.log(err));
+        .then( async (response) => {
+            const ids = response.data.data;
+            for(i=0; i < 7; i++){
+                await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+                .then((response)=>{
+                    images.push(response.data.media_url);
+                    links.push(response.data.permalink);
+                }).catch(err => console.log(err));
+            }
+            res.clearCookie("reCaptcha");
+            res.render('home', {
+                images : images,
+                links : links
+            });
+        })
+        .catch(err => {
+            res.clearCookie("reCaptcha");
+            res.render('home',{
+                images: null,
+                links: null,
+            })
+            });
+    }else{
+        if(req.session.reCaptcha === undefined){
+            req.session.reCaptcha = false
+            res.render('reCaptcha');
         }
-        res.render('home', {
-            images : images,
-            links : links
-        });
-        console.log(ip)
-    })
-    .catch(err => {
-         res.render('home',{
-             images: null,
-             links: null,
-         })
-         console.log(ip) 
-        });
-    } 
+        else{
+            res.render('reCaptcha');
+        }
+    }
+     
+});
+
+app.post('/reCaptcha', (req,res)=>{
+    if(
+        req.body.captcha === undefined ||
+        req.body.captcha === '' ||
+        req.body.captcha === null
+      ){
+          res.json({
+              body : {
+                  'success': false,
+              }
+          });
+      }
+
+      const secretKey = process.env.CAPTCHA_SECRET_KEY;
+
+      const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
+
+      request(verifyUrl, (err, response, body)=>{
+        body = JSON.parse(body);
+        console.log(body)
+        if(body.success !== undefined && !body.success){
+            res.json(body)
+        }else{
+            req.session.reCaptcha = true;
+            res.json(body)
+        }
+
+      })
 });
 
 var upload = multer();

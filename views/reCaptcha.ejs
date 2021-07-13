@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/reCaptcha.css" type="text/css"/>
+    <link rel="shortcut icon" href="/assets/amity-logo.png">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <title>Cyber Congress — AISG46</title>
+  </head>
+  <body>
+    <div id="loading">
+        <div class="container message">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+              <div class="message-box">
+                <h4>
+                  Processing...
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="main">
+            <form id="captchaForm">
+                <div class="g-recaptcha" data-sitekey="6LdGWpEbAAAAACJwIptx6nsMCV35emqAZ0BtkW_p"></div>
+                <button class="button btn mt-2" type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script>
+        const loaderBackdrop = document.querySelector('#loading');
+        document.getElementById('captchaForm').addEventListener('submit', (e)=>{
+            e.preventDefault();
+            const captcha = document.getElementById('g-recaptcha-response').value
+            if(!captcha){
+                alert('This field is required');
+            }else{
+                loaderBackdrop.style.display = "flex";
+                fetch('/reCaptcha',{
+                    method: 'POST',
+                    headers: {
+                        'Accept' : 'application/json, text/plain, */*',
+                        'Content-type': 'application/json'
+                    },
+                    body : JSON.stringify({
+                        captcha : captcha
+                    })
+                }).then(()=>{
+                    location.reload();
+                })
+                .catch((err)=> console.log(err))
+            }
+        });
+    </script>
+  </body>
+</html>

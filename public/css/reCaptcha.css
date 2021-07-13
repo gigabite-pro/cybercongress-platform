@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'ShameimaruSans_copy';
+    src: URL('/fonts/ShameimaruSans_copy.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Geomanist-Book';
+    src: URL('/fonts/Geomanist-Book.ttf') format('truetype');
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #F1F1F1;
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    font-family: 'ShameimaruSans_copy';
+    background-color: #454040;
+    color: white;
+    transition-duration: 0.3s;
+    margin:auto;
+    margin-top: 1.5rem;
+}
+
+.button:hover{
+    background-color: #292828;
+    color: white;
+}
+
+#loading{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1050;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.281);
+    transition: all 0.5s;
+}
+
+#loading .message-box{
+    background-color: white;
+    color: #454040;
+    font-family: 'Geomanist-Book';
+    padding: 1.5rem;
+    width: fit-content;
+    border-radius: 5px;
+    margin: auto;
+}
