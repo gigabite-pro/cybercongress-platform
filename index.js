@@ -292,7 +292,7 @@ app.post('/newsletter', (req,res)=>{
                 console.log('New SignUp');
                 axios.get(`${process.env.DOC_API}?email=${email}`).then(response => {
                     console.log('email added');
-                    res.redirect('/');
+                    res.render('submit');
                 }).catch(err => {
                     console.log(err)
                     res.render("error");
