@@ -575,12 +575,61 @@ a{
 }
 
 .news-out{
-    background-color: white;
-    border-radius: 0.5em;
     box-shadow: 1em 1em;
-    padding: 1em;
+    background-color: white;
+    /* padding: 1em; */
     margin: auto;
-    width:80%;
+    width: 90%;
+    max-width: fit-content;
+}
+
+.grey-bar{
+    background-color: #828385;
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 0.1em #212429 solid;
+    border-left: 0.1em #212429 solid;
+    border-right: 0.1em #212429 solid
+}
+.btn-default {
+    font-size: 13px;
+    color: rgba(108, 88, 179, 0.75);
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 2px solid rgba(108, 89, 179, 0.75);
+    border-radius: 40px;
+    background: transparent;
+    transition: all 0.3s ease 0s;
+  }
+  
+.icon-news{
+    margin: 0.25rem;
+}
+.news-in{
+    padding:3em;
+    text-align: center;
+    border: #212429 0.1em solid;
+    border-top: none;
+}
+.news-link{
+    text-align: center;
+    color: #242E50;
+    font-size: 2rem;
+    text-decoration: underline;
+    font-family: "ShameimaruSans_copy";
+    font-weight: bold;
+}
+
+.btn-outline-dark:hover{
+    background-color: #CBCED5 !important; 
+    color: #242E50;
+}
+.news-btn{
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-top: 1em;
 }
 
 #newsletter{
@@ -588,41 +637,8 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-
-.news-in{
-    background-color: #F1F1F1;
-    border-radius: 0.5em;
-    height: 100%;
-}
-.news-btn{
-    margin-right: 0;
-    margin-left:auto;
-}
-
-#img-news {
-    background-image: url("/assets/news.jpeg");
-    background-size: cover; 
-    background-position: center;
-    height: 100%;
-    overflow: hidden;
-    opacity: 40%;
-    margin-left: 0px;
-    background-repeat: no-repeat;
-    transform: scale(10rem);
-}
-
-.news-content{
-    padding: 3em;
-    text-align: left;
-    height: 100%;
-    margin-top: 2em;
-    margin-bottom: 1.5em;
-} 
-.newsletter-input{
-    width: 100%;
-    height: 3em;
+    max-width: fit-content;
+    
 }
 
 
@@ -847,28 +863,17 @@ a{
     .phone-nav-item{
         padding-right: 1rem;
     }
-
-    .mail-head{
-        margin-top: 1rem;
-    }
     .news-out{
-        margin-top: 1rem;
         width: 100%;
     }
     #newsletter{
-        margin-top:15rem;
+        margin-top: 15rem;
+        margin-left: 2em;
     }
-    .email-head{
-        font-size: 1em;
+    .news-link{
+        font-size: 1.2em;
     }
-    .news-btn{
-        margin-right: 0;
-        margin-left: auto;
-    }
-    #img-news{
-        display: none;
-    }
-    
+ 
 }
 
 
