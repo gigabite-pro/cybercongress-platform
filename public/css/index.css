@@ -575,12 +575,11 @@ a{
 }
 
 .news-out{
-    box-shadow: 1em 1em;
+    box-shadow: -1em 1em;
     background-color: white;
     /* padding: 1em; */
-    margin: auto;
-    width: 90%;
-    max-width: fit-content;
+    margin: auto;   
+    width: 55vw;
 }
 
 .grey-bar{
@@ -608,7 +607,7 @@ a{
     margin: 0.25rem;
 }
 .news-in{
-    padding:3em;
+    padding:3vw 2vw;
     text-align: center;
     border: #212429 0.1em solid;
     border-top: none;
@@ -627,9 +626,11 @@ a{
     color: #242E50;
 }
 .news-btn{
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 4em;
+    padding-right: 4em;
     margin-top: 1em;
+    background-color: #CBCED5;
+    font-family: 'ShameimaruSans_copy';
 }
 
 #newsletter{
@@ -637,7 +638,6 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: fit-content;
     
 }
 
@@ -873,7 +873,9 @@ a{
     .news-link{
         font-size: 1.2em;
     }
- 
+    .news-btn{
+        margin-top: 1em;
+    }
 }
 
 
