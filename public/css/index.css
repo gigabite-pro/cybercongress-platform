@@ -777,7 +777,7 @@ a{
     }
 
     #insta{
-        margin-top: 35rem;
+        margin-top: 15rem;
     }
 
     .right-insta-posts{
@@ -869,7 +869,7 @@ a{
         padding-right: 1rem;
     }
     .news-out{
-        width: 100%;
+        width: 85vw;
     }
     .news-link{
         font-size: 1.2em;
@@ -877,19 +877,16 @@ a{
     .news-in{
         padding: 7vw 4vw;
     }
+
+    .news-in div{
+        font-size: 5vw;
+    }
     .news-btn{
         padding-right: 2em;
         padding-left: 2em;
         margin-top: -1em;
     }
-}
 
-
-.follow-us-mobile {
-    display:none;
-}
-
-@media(max-width: 500px){
     .right-insta-posts{
         margin-left: 0rem;
     }
@@ -932,6 +929,17 @@ a{
         margin-top: 0.7rem;
         font-size: 1.3rem;
         display: block;
+    }
+}
+
+
+.follow-us-mobile {
+    display:none;
+}
+
+@media(max-width: 400px){
+    #newsletter{
+        margin-top: 12rem;
     }
 }
 

@@ -55,7 +55,7 @@ app.get('/', (req,res)=>{
         axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
         .then( async (response) => {
             const ids = response.data.data;
-            for(i=0; i < 7; i++){
+            for(i=0; i < 8; i++){
                 await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink,media_type&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
                 .then((response)=>{
                     if(response.data.media_type != 'VIDEO'){
