@@ -865,10 +865,6 @@ a{
     .news-out{
         width: 100%;
     }
-    #newsletter{
-        margin-top: 15rem;
-        margin-left: 2em;
-    }
     .news-link{
         font-size: 1.2em;
     }   
@@ -888,10 +884,6 @@ a{
 }
 
 @media(max-width: 500px){
-    #insta{
-        margin-top: 20rem;
-    }
-
     .right-insta-posts{
         margin-left: 0rem;
     }
