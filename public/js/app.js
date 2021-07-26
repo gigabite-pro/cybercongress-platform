@@ -196,15 +196,6 @@ illustrationBox.addEventListener('mouseover', ()=>{
   }
 });
 
-  submit2.addEventListener('click', (e) => {
-    if (email1.value.includes("@")==false){
-      alert('Please enter a valid email');
-      e.preventDefault();
-    } else {
-      loaderBackdrop.style.display = "flex";
-    }
-  })
-
 
  // Loading Backdrop after submit btn click and form validation
 submitBtn.forEach(btn => {

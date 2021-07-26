@@ -646,6 +646,9 @@ a{
     
 }
 
+.follow-us-mobile {
+    display: none;
+}
 
 @media(max-width: 500px){
 
@@ -927,15 +930,11 @@ a{
     }
     .follow-us-mobile{
         margin-top: 0.7rem;
-        font-size: 1.3rem;
+        font-size: 5.2vw;
         display: block;
     }
 }
 
-
-.follow-us-mobile {
-    display:none;
-}
 
 @media(max-width: 400px){
     #newsletter{
