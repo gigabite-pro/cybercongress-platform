@@ -56,10 +56,12 @@ app.get('/', (req,res)=>{
         .then( async (response) => {
             const ids = response.data.data;
             for(i=0; i < 7; i++){
-                await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+                await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink,media_type&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
                 .then((response)=>{
-                    images.push(response.data.media_url);
-                    links.push(response.data.permalink);
+                    if(response.data.media_type != 'VIDEO'){
+                        images.push(response.data.media_url);
+                        links.push(response.data.permalink);
+                    }
                 }).catch(err => console.log(err));
             }
             res.render('home', {

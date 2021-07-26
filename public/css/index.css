@@ -632,6 +632,12 @@ a{
     font-family: 'ShameimaruSans_copy';
 }
 
+.newsletter-flexed{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 #newsletter{
     height: 108vh;
     display: flex;
