@@ -62,14 +62,12 @@ app.get('/', (req,res)=>{
                     links.push(response.data.permalink);
                 }).catch(err => console.log(err));
             }
-            res.clearCookie("reCaptcha");
             res.render('home', {
                 images : images,
                 links : links
             });
         })
         .catch(err => {
-            res.clearCookie("reCaptcha");
             res.render('home',{
                 images: null,
                 links: null,

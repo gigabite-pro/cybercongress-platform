@@ -628,7 +628,6 @@ a{
 .news-btn{
     padding-left: 4em;
     padding-right: 4em;
-    margin-top: 1em;
     background-color: #CBCED5;
     font-family: 'ShameimaruSans_copy';
 }
@@ -872,9 +871,14 @@ a{
     }
     .news-link{
         font-size: 1.2em;
+    }   
+    .news-in{
+        padding: 7vw 4vw;
     }
     .news-btn{
-        margin-top: 1em;
+        padding-right: 2em;
+        padding-left: 2em;
+        margin-top: -1em;
     }
 }
 
