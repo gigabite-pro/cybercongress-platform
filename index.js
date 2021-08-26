@@ -223,9 +223,12 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     const dbImages = docs.images;
                     const dbSecrecy = docs.secrecy;
                     const dbip = docs.ip;
-        
-                    axios.get(`${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
-                    ).then(response => {
+                    
+                    const url = `${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
+
+                    const encodedUrl = encodeURI(url);
+
+                    axios.get(encodedUrl).then(response => {
                         console.log(response.data)
 
                         var mailOptions = {
