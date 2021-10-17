@@ -135,156 +135,143 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
     }
     // If 8 files, show error page
 
-    if(fileinfo.length != 0){
-        try {
-            for(let i=0; i < fileinfo.length; i++){
-                const buffer = Buffer.from(fileinfo[i].buffer);
-                const base64String = buffer.toString('base64');
-        
-                const config = {
-                    method: 'post',
-                    url: 'https://api.imgur.com/3/image',
-                    headers: { 
-                        'Authorization': `Client-ID ${process.env.CLIENT_ID}`, 
-                         Accept: 'application/json',
-                    },
-                    data : {'image':base64String},
-                    mimeType: 'multipart/form-data',
-                };
-        
-                axios(config)
-                .then(function (response) {
-                    images.push(response.data.data.link);
-                })
-                .catch(function (error) {
-                    console.log(error.response.status);
-                });
-            }   
-        } catch (error) {
-            console.log(error);
+    function getImages(){
+        if(fileinfo.length != 0){
+                for(let i=0; i < fileinfo.length; i++){
+                    const buffer = Buffer.from(fileinfo[i].buffer);
+                    const base64String = buffer.toString('base64');
+            
+                    const config = {
+                        method: 'post',
+                        url: 'https://api.imgur.com/3/image',
+                        headers: { 
+                            'Authorization': `Client-ID ${process.env.CLIENT_ID}`, 
+                             Accept: 'application/json',
+                        },
+                        data : {'image':base64String},
+                        mimeType: 'multipart/form-data',
+                    };
+            
+                    axios(config)
+                    .then(function (response) {
+                        images.push(response.data.data.link);
+                        if (images.length === fileinfo.length) {
+                            allRequests()
+                          }
+                    })
+                    .catch(function (error) {
+                        console.log(error.response);
+                    });
+                }  
+        }else{
+            allRequests()
         }
     }
 
-    if(!name){
-        name = "Anonymous"
-    }
-
-    if(!phone){
-        phone = "Anonymous"
-    }
-
-    if(!typeOfUser){
-        typeOfUser = "Anonymous"
-    }
-
-    if(secrecy == 'yes'){
-        secrecy = "True";
-    }else{
-        secrecy = "False";
-    }
-
-    if(phone.toString().length > 10){
-        res.render('error');
-    }
-
-    else{
-        setTimeout(() => {
-            if(images.length != fileinfo.length){
-                res.render('error')
-            }
-            
-            if(images.length == 0){
-                images = ["Not Provided"]
-            }
+    function allRequests(){
+        if(!name){
+            name = "Anonymous"
+        }
     
-            newReport = new Report({
-                'reportType': reportType,
-                'name': name,
-                'typeOfUser': typeOfUser,
-                'phone' : phone.toString(),
-                'message' : message,
-                'images': images,
-                'secrecy': secrecy,
-                'ip': ip,
-            });
+        if(!phone){
+            phone = "Anonymous"
+        }
+    
+        if(!typeOfUser){
+            typeOfUser = "Anonymous"
+        }
+    
+        if(secrecy == 'yes'){
+            secrecy = "True";
+        }else{
+            secrecy = "False";
+        }
+    
+        if(phone.toString().length > 10){
+            res.render('error');
+        }
+    
+        else{  
+                
+                if(images.length == 0){
+                    images = ["Not Provided"]
+                }
         
-            newReport.save()
-            .then((report)=>{
-                const id = report.id;
-                Report.findById(id, (err,docs)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    const dbName = docs.name;
-                    const dbReportType = docs.reportType;
-                    const dbPhone = docs.phone;
-                    const dbTypeOfUser = docs.typeOfUser;
-                    const dbMessage = docs.message;
-                    const dbImages = docs.images;
-                    const dbSecrecy = docs.secrecy;
-                    const dbip = docs.ip;
-                    
-                    const url = `${process.env.SCRIPT_URL}/?rt=${dbReportType}&name=${dbName}&ut=${dbTypeOfUser}&ph=${dbPhone}&msg=${dbMessage}&img=${dbImages}&sec=${dbSecrecy}&auth=${process.env.AUTH_TOKEN}`
-
-                    const encodedUrl = encodeURI(url);
-
-                    axios.get(encodedUrl).then(response => {
-                        console.log(response.data)
-
-                        var mailOptions = {
-                            from: 'cybercongressaisg46@gmail.com',
-                            to: 'cybercongressaisg46@gmail.com',
-                            subject: `Report Type: ${dbReportType}`,
-                            html: `<p>
-                            <strong>User Type: </strong>${dbTypeOfUser} 
-                            <br>
-                            <strong>Name: </strong>${dbName}
-                            <br>
-                            <strong>Phone Number: </strong>${dbPhone}
-                            <br>
-                            <strong>Message: </strong>${dbMessage}
-                            <br>
-                            <strong>Images: </strong>${dbImages}
-                            <br>
-                            <strong>Maintain Secrecy: </strong>${dbSecrecy}
-                            <br>
-                            <strong>IP Address: </strong>${dbip}
-                        </p>`
-                        };
+                newReport = new Report({
+                    'reportType': reportType,
+                    'name': name,
+                    'typeOfUser': typeOfUser,
+                    'phone' : phone.toString(),
+                    'message' : message,
+                    'images': images,
+                    'secrecy': secrecy,
+                    'ip': ip,
+                });
     
-                        transporter.sendMail(mailOptions, function(error, info){
-                            if (error) {
+                newReport.save()
+                .then((report)=>{
+                    console.log('added to db');
+                    }).catch(err=>{
+                        console.log(err);
+                    })
+    
+                    const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${images}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
+    
+                    const encodedUrl = encodeURI(url);
+        
+                    axios.get(encodedUrl).then((response)=>{
+                        console.log(response.data);
+                    }).catch(err=> console.log(err))
+    
+                    
+                    var mailOptions = {
+                        from: 'cybercongressaisg46@gmail.com',
+                        to: 'cybercongressaisg46@gmail.com',
+                        subject: `Report Type: ${reportType}`,
+                        html: `<p>
+                        <strong>User Type: </strong>${typeOfUser} 
+                        <br>
+                        <strong>Name: </strong>${name}
+                        <br>
+                        <strong>Phone Number: </strong>${phone.toString()}
+                        <br>
+                        <strong>Message: </strong>${message}
+                        <br>
+                        <strong>Images: </strong>${images}
+                        <br>
+                        <strong>Maintain Secrecy: </strong>${secrecy}
+                        <br>
+                        <strong>IP Address: </strong>${ip}
+                    </p>`
+                    };
+    
+                    transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
                             console.log(error);
-                            } else {
-                                console.log('Email sent: ' + info.response);
-                                if(dbPhone != 'Anonymous'){
-                                    var options = {authorization : process.env.FAST_SMS_API_KEY , message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(dbPhone)]} 
-                                    fast2sms.sendMessage(options) 
-                                    .then(()=>{
-                                        console.log('SMS sent')
-                                        res.render('submit')
-                                    }).catch((err)=>{
-                                        console.log(err)
-                                        res.render('error')
-                                    })
-                                }else{
-                                    res.render('submit')
-                                }
-                            }
-                        });
-                        }).catch(err=>{
-                            console.log(err);
-                            res.render('error');
-                        });
-                })
-            })
-            .catch((err)=>{
-                console.log(err);
-                res.render('error');
-            });
-        }, 9000);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                    })
+    
+                    if(phone != 'Anonymous'){
+                        var options = {authorization : process.env.FAST_SMS_API_KEY , message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
+                        fast2sms.sendMessage(options) 
+                        .then(()=>{
+                            console.log('SMS sent')
+                            res.render('submit')
+                        }).catch((err)=>{
+                            console.log(err)
+                            res.render('error')
+                        })
+                    }else{
+                        res.render('submit')
+                    }
+        }
     }
-});
+
+    getImages()
+})
+
 app.post('/newsletter', (req,res)=>{
     const email = req.body.email;
             newNewsletter = new Newsletter({
