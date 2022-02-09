@@ -254,7 +254,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     })
     
                     if(phone != 'Anonymous'){
-                        var options = {authorization : process.env.FAST_SMS_API_KEY , message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
+                        var options = {authorization : process.env.FAST_SMS_API_KEY ,sender_id : 'CYBERCONG', message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
                         fast2sms.sendMessage(options) 
                         .then(()=>{
                             console.log('SMS sent')
