@@ -298,5 +298,9 @@ app.post('/newsletter', (req,res)=>{
     
 });
 
+app.use((req, res, next) => {
+    res.status(404).render('error');
+})
+
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`))
