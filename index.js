@@ -29,7 +29,6 @@ app.enable('trust proxy');
 
 //DB Config
 const db = require('./config/keys').MongoURI;
-const { response } = require('express');
 
 
 //Connect DB
@@ -48,72 +47,62 @@ var transporter = nodemailer.createTransport({
   
 
 app.get('/', (req,res)=>{
-    if(req.session.reCaptcha === true){
-        const images = []
-        const links = []
-        axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-        .then( async (response) => {
-            const ids = response.data.data;
-            for(i=0; i < 8; i++){
-                await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink,media_type&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
-                .then((response)=>{
-                    if(response.data.media_type != 'VIDEO'){
-                        images.push(response.data.media_url);
-                        links.push(response.data.permalink);
-                    }
-                }).catch(err => console.log(err));
-            }
-            res.render('home', {
-                images : images,
-                links : links
-            });
+    const images = []
+    const links = []
+    axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+    .then( async (response) => {
+        const ids = response.data.data;
+        for(i=0; i < 8; i++){
+            await axios.get(`https://graph.instagram.com/${ids[i].id}?fields=media_url,permalink,media_type&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
+            .then((response)=>{
+                if(response.data.media_type != 'VIDEO'){
+                    images.push(response.data.media_url);
+                    links.push(response.data.permalink);
+                }
+            }).catch(err => console.log(err));
+        }
+        res.render('home', {
+            images : images,
+            links : links
+        });
+    })
+    .catch(err => {
+        res.render('home',{
+            images: null,
+            links: null,
         })
-        .catch(err => {
-            res.render('home',{
-                images: null,
-                links: null,
-            })
-            });
-    }else{
-        if(req.session.reCaptcha === undefined){
-            req.session.reCaptcha = false
-            res.render('reCaptcha');
-        }
-        else{
-            res.render('reCaptcha');
-        }
-    }
+    });
      
 });
 
-app.post('/reCaptcha', (req,res)=>{
-    if(
-        req.body.captcha === undefined ||
-        req.body.captcha === '' ||
-        req.body.captcha === null
-      ){
-          res.json({
-              body : {
-                  'success': false,
-              }
-          });
-      }
+// app.post('/reCaptcha', (req,res)=>{
+//     if(
+//         req.body.captcha === undefined ||
+//         req.body.captcha === '' ||
+//         req.body.captcha === null
+//       ){
+//           res.json({
+//               body : {
+//                   'success': false,
+//               }
+//           });
+//       }
 
-      const secretKey = process.env.CAPTCHA_SECRET_KEY;
+//       const secretKey = process.env.CAPTCHA_SECRET_KEY;
 
-      const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
+//       const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
 
-      request(verifyUrl, (err, response, body)=>{
-        body = JSON.parse(body);
-        if(body.success !== undefined && !body.success){
-            res.json(body)
-        }else{
-            req.session.reCaptcha = true;
-            res.json(body)
-        }
+//       request(verifyUrl, (err, response, body)=>{
+//         body = JSON.parse(body);
+//         if(body.success !== undefined && !body.success){
+//             res.json(body)
+//         }else{
+//             req.session.reCaptcha = true;
+//             res.json(body)
+//         }
 
-      })
-});
+//       })
+// });
 
 var upload = multer();
 
