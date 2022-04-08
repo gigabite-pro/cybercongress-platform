@@ -253,7 +253,8 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     })
     
                     if(phone != 'Anonymous'){
-                        axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message='Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'&route=v3&numbers=${phone.toString()}`)
+                        const message = 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'
+                        axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message=${message}&route=v3&numbers=${phone.toString()}`)
                         .then(res =>{
                             if(res.data.return == true){
                                 console.log(`SMS sent to ${phone.toString()}`)
