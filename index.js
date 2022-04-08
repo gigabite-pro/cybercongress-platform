@@ -5,7 +5,6 @@ const multer = require('multer');
 const axios = require('axios');
 const request = require('request');
 const nodemailer = require('nodemailer');
-const fast2sms = require('fast-two-sms')
 const mongoose = require('mongoose');
 const session = require('express-session');
 const Report = require('./models/report');
@@ -254,15 +253,25 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     })
     
                     if(phone != 'Anonymous'){
-                        var options = {authorization : process.env.FAST_SMS_API_KEY ,sender_id : 'CYBERCONG', message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
-                        fast2sms.sendMessage(options) 
-                        .then(()=>{
-                            console.log('SMS sent')
-                            res.render('submit')
-                        }).catch((err)=>{
+                        axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message='Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'&route=v3&numbers=${phone.toString()}`)
+                        .then(res =>{
+                            if(res.data.return == true){
+                                console.log(`SMS sent to ${phone.toString()}`)
+                                res.render('submit')
+                            }
+                        }).catch(err => {
                             console.log(err)
                             res.render('error')
                         })
+                        // var options = {authorization : process.env.FAST_SMS_API_KEY ,sender_id : 'CYBERCONG', message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
+                        // fast2sms.sendMessage(options) 
+                        // .then(()=>{
+                        //     console.log('SMS sent')
+                        //     res.render('submit')
+                        // }).catch((err)=>{
+                        //     console.log(err)
+                        //     res.render('error')
+                        // })
                     }else{
                         res.render('submit')
                     }
