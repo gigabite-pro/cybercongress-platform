@@ -4,7 +4,8 @@
   "description": "A platform for cybercongress of ais-46",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "start": "node index.js"
   },
   "author": "Vaibhav Sharma",
   "license": "ISC",
