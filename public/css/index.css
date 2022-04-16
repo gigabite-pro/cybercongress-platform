@@ -426,7 +426,7 @@ small{
 #team{
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 101vh;
 }
 
 .team-content{
@@ -491,11 +491,15 @@ small{
 /* Alumni */
 #alumni{
     height: 100vh;
-    margin-top: 2rem;
+    margin-top: 10rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.alumni-head{
+    margin-bottom: 0.5rem;
 }
 
 .responsive-card{
@@ -503,7 +507,7 @@ small{
 }
 
 #insta{
-    height: 108vh;
+    height: 105vh;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -661,11 +665,16 @@ a{
 
 @media(max-width: 500px){
 
-    body{
-        padding: 1rem;
+    .wrapper{
+        padding: 2rem 1rem 0rem 1rem;
     }
+
     ::-webkit-scrollbar{
         display: none;
+    }
+
+    #home{
+        height: unset;
     }
 
     .school-logo-phone-container{
@@ -712,7 +721,8 @@ a{
     }
 
     #about{
-        margin-top: 20rem;
+        height: unset;
+        margin-top: 4rem;
     }
 
     .about-head{
@@ -730,7 +740,8 @@ a{
     }
 
     #report{
-        margin-top: 20rem;
+        height: unset;
+        margin-top: 5rem;
     }
 
     .report-content{
@@ -766,30 +777,14 @@ a{
         padding-left: 1rem;
     }
 
-    #team{
-        margin-top: 40rem;
-    }
-
-    .illus-outer{
-        margin: auto;
-    }
-
-    .students-head{
-        margin-top: 0rem;
-    }
-
-    .team-content{
-        margin-left: 0rem;
-        font-size: 1rem;
-    }
-
-    #alumni{
-        margin-top: 60rem;
-        margin-bottom: 1rem;
+    #newsletter{
+        height: unset;
+        margin-top: 10rem;
     }
 
     #insta{
-        margin-top: 15rem;
+        height: unset;
+        margin-top: 10rem;
     }
 
     .right-insta-posts{
@@ -826,6 +821,31 @@ a{
         height: 3rem;
         width: 90%;
     }
+
+    #team{
+        height: unset;
+        margin-top: 10rem;
+    }
+
+    .illus-outer{
+        margin: auto;
+    }
+
+    .students-head{
+        margin-top: 0rem;
+    }
+
+    .team-content{
+        margin-left: 0rem;
+        font-size: 1rem;
+    }
+
+    #alumni{
+        height: unset;
+        margin-top: 10rem;
+        margin-bottom: 1rem;
+    }
+
 
     .follow-us{
         margin-top: 1.1rem;
@@ -944,10 +964,4 @@ a{
     }
 }
 
-
-@media(max-width: 400px){
-    #newsletter{
-        margin-top: 12rem;
-    }
-}
 
