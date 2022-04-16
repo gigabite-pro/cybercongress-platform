@@ -665,8 +665,8 @@ a{
 
 @media(max-width: 500px){
 
-    .wrapper{
-        padding: 2rem 1rem 0rem 1rem;
+    body{
+        padding: 1rem;
     }
 
     ::-webkit-scrollbar{
@@ -780,6 +780,10 @@ a{
     #newsletter{
         height: unset;
         margin-top: 10rem;
+    }
+
+    .news-link{
+        font-size: 1.5rem;
     }
 
     #insta{
