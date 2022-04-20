@@ -267,11 +267,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     }
         }
     }
-    if(req.session.reCaptcha === true){
-        getImages()
-    }else{
-        res.render('error')
-    }
+    getImages()
 })
 
 app.post('/newsletter', (req,res)=>{

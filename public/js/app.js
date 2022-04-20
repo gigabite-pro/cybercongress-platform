@@ -204,27 +204,105 @@ submitBtn.forEach(btn => {
     if(formReveal.style.display == "block"){
       var radio2Value = document.querySelector('#maintainSecrecy1');
       if(!radio1Value.value){
-        alert(`Please select if you are a Student or Teacher.`);
+        Toastify({
+          text: `Please select if you are a Student or Teacher.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(!radio2Value.value){
-        alert(`Please select if you want to maintain secrecy or not.`);
+        Toastify({
+          text: `Please select if you want to maintain secrecy or not.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(phone.value == ""){
-        alert('Please enter your phone number.');
+        Toastify({
+          text: `Please enter your mobile number.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(phone.value.toString().length > 10){
-        alert('Phone number cannot exceed 10 digits.');
+        Toastify({
+          text: `Mobile number cannot exceed 10 digits.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(nameOfUser.value == ""){
-        alert('Please enter your name.');
+        Toastify({
+          text: `Please enter your name.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(message[0].value == ""){
-        alert('Please enter your message.');
+        Toastify({
+          text: `Please enter your message.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else{
@@ -234,11 +312,37 @@ submitBtn.forEach(btn => {
     }else{
       var radio2Value = document.querySelector('#maintainSecrecy2');
       if(!radio2Value.value){
-        alert(`Please select if you want to maintain secrecy or not.`);
+        Toastify({
+          text: `Please select if you want to maintain secrecy or not.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else if(message[1].value == ""){
-        alert('Please enter your message.');
+        Toastify({
+          text: `Please enter your message.`,
+          duration: 5000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: false,
+          gravity: "top", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: false, // Prevents dismissing of toast on hover
+          style: {
+            background: "#F1F1F1",
+            color: 'black',
+          }
+        }).showToast();
         e.preventDefault();
       }
       else{
