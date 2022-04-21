@@ -202,8 +202,10 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     }).catch(err=>{
                         console.log(err);
                     })
+
+                    var imagesString = images.join(', ');
     
-                    const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${images}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
+                    const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
     
                     const encodedUrl = encodeURI(url);
         
@@ -225,7 +227,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                         <br>
                         <strong>Message: </strong>${message}
                         <br>
-                        <strong>Images: </strong>${images}
+                        <strong>Images: </strong>${imagesString}
                         <br>
                         <strong>Maintain Secrecy: </strong>${secrecy}
                         <br>
@@ -244,8 +246,8 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     if(phone != 'Anonymous'){
                         const message = 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'
                         axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message=${message}&route=v3&numbers=${phone.toString()}`)
-                        .then(res =>{
-                            if(res.data.return == true){
+                        .then(response =>{
+                            if(response.data.return == true){
                                 console.log(`SMS sent to ${phone.toString()}`)
                                 res.render('submit')
                             }

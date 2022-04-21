@@ -206,7 +206,7 @@ submitBtn.forEach(btn => {
       if(!radio1Value.value){
         Toastify({
           text: `Please select if you are a Student or Teacher.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -214,8 +214,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -223,7 +223,7 @@ submitBtn.forEach(btn => {
       else if(!radio2Value.value){
         Toastify({
           text: `Please select if you want to maintain secrecy or not.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -231,8 +231,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -240,7 +240,7 @@ submitBtn.forEach(btn => {
       else if(phone.value == ""){
         Toastify({
           text: `Please enter your mobile number.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -248,8 +248,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -257,7 +257,7 @@ submitBtn.forEach(btn => {
       else if(phone.value.toString().length > 10){
         Toastify({
           text: `Mobile number cannot exceed 10 digits.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -265,8 +265,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -274,7 +274,7 @@ submitBtn.forEach(btn => {
       else if(nameOfUser.value == ""){
         Toastify({
           text: `Please enter your name.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -282,8 +282,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -291,7 +291,7 @@ submitBtn.forEach(btn => {
       else if(message[0].value == ""){
         Toastify({
           text: `Please enter your message.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -299,8 +299,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -314,7 +314,7 @@ submitBtn.forEach(btn => {
       if(!radio2Value.value){
         Toastify({
           text: `Please select if you want to maintain secrecy or not.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -322,8 +322,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
@@ -331,7 +331,7 @@ submitBtn.forEach(btn => {
       else if(message[1].value == ""){
         Toastify({
           text: `Please enter your message.`,
-          duration: 5000,
+          duration: 4000,
           destination: "https://github.com/apvarun/toastify-js",
           newWindow: true,
           close: false,
@@ -339,8 +339,8 @@ submitBtn.forEach(btn => {
           position: "center", // `left`, `center` or `right`
           stopOnFocus: false, // Prevents dismissing of toast on hover
           style: {
-            background: "#F1F1F1",
-            color: 'black',
+            background: "#dc3545",
+            fontFamily: 'Geomanist-Book', 
           }
         }).showToast();
         e.preventDefault();
