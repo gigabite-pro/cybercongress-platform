@@ -253,7 +253,7 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                             }
                         }).catch(err => {
                             console.log(err)
-                            res.render('error')
+                            res.render('submit')
                         })
                         // var options = {authorization : process.env.FAST_SMS_API_KEY ,sender_id : 'CYBERCONG', message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
                         // fast2sms.sendMessage(options) 
