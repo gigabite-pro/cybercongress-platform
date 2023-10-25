@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cybercongress-9b71a",
+  "private_key_id": "e9409f39a4ce49dbb1725aedcc2e4f2c6451e6d0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSO3ptjAOFHHZw\nZRiHiMQBmQIor+3YsZUO1ORnxkj74r4kPH4pWDlXg6G58ZVmpJwBQZWsSIlyB1QC\nAeAeq086J1x+kVNTea6q2F8Iozm8/PIwrMsAlM6ro+BvAvETsDJu5RazeFLR/nqA\nbcxYcO0C1P5EvLoD9GCUIX0jwSziz++MtqQn6TgKGjFjS/o5Pe4mZ4wwCmiKHJdR\n7gfiE3aMPWJDKiVCIXShX8JHN0KEaOopsApTjcm5UW1NMs/RApDMADt4BhMiAwk6\nwXuiI0oYvJoipSP15c9HomAB3ambxmevBm82soDSTLv1HgGPaLIKDZ6d8S4I8lsL\nyj3pJADvAgMBAAECggEALyiSbPJkc76PvuSenQCL30PgXRohw2MKabpNxg2Pn5kc\nR+qd7k5RBpWLeLd9aPnx2MJKfcwDsOV97blX+ek5q3Ta5bVZuLbp/H7uynQ65m7j\nMRIBs46t0YjANoa1Z1I17fRLpFSQV3S7LAX1Ob2THPiEVQz0uSBfbbsZZCTYGcRc\nuaqmWJVdiDKntM2c+xMU53scEuEOrVo7zvN2GlREWB/RcJbe0bUUjA6jBG65p43D\n3UbXrn2d0kPMwg2QqkgVVxkhwW015CnH6c0xxf+j/6e2Bl7xGYBv5rTWxGhho+4U\nL3hmn4fenqtzLl17gT04CKdB+EkP5aih2sdVX2GAgQKBgQD6SuL2k/zQaRRMj8tm\nkBD97+b/e5WSNmLZoZgSOK5DMPSq+H5L26W/FGho9xa1mEFzMbAHL6Yk52aMFVIH\nfhoOm6jgADelX8H4ufvZBfJrT2iS3p2G2GTAC9OYMWJ4V9dhm63h/67I1oRVyGok\ny5NuXNLHnebSXrttfqGgv/rFrwKBgQDXBrxBm7rX2du8nBp7yr+LmotIxiEMwWG2\nJTrT+D0M1JpgdaAsxHeYWGiAmOdhKCMn/xwnVnOuFhBw3fuEf/ZKGIu5HA3B03b1\ncwNkUVJkT2bpFhNKSZ8Oco+qK/zxEp9sXzmWmiSBl0Tte6CxKmwmaAW7/9S4btd9\n0UK7YPCIwQKBgCxsfjwlqAmVnPS50PAzQdDQc7+Ev9djr8fQ1pzlUoi6d7KgyEnO\ngmyXwrBeqrkwfO1lNEkSO/rw11Klthl+WEGffynC4B2KEXOEDx9F3vEM9xKaUHtO\njRNJBhVNLp0Nejzo1MP4DZ239WUEXVKKj3BXKVIkxIMyLTIR974AVRIhAoGAdtc9\nItGsIXJB9Osd4/85gDHI+06to3wZwe6vpcmUDExQijFYdoWbR7LNBw37C4KAc7GW\nYNNyGewN6CN3yFJkz6zjREqR++cg3yVS4ZXkgJY13Wsa/DrWUsjUSAwJvz84p0+1\n51uIA6uUJ+Dk/iXhIhTp3m7VpZ11Mg9+30sDhcECgYEA3/D2kDC3rCyk/7M+UN/D\nVoWegGR8kS+neKULOTrGNJ1TVcwV2RaRZkWpUzbtQ5vZ6pPouPBiIhNKVotl3bNN\nnvu5jmq+5mSvsyYnCHuaxDXhdTBp9Gaz0vcRbLizD1xq3ZdfPeP5c17zxrnP34gg\nVQ7rfYT6Sa4vWBI1YJuyFqA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-39aso@cybercongress-9b71a.iam.gserviceaccount.com",
+  "client_id": "117194475201366710330",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-39aso%40cybercongress-9b71a.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
