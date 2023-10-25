@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
-const path = require('path');
-const multer = require('multer');
 const axios = require('axios');
-const request = require('request');
 const nodemailer = require('nodemailer');
+const multer = require('multer');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const Report = require('./models/report');
 const Newsletter = require('./models/newsletter');
 require('dotenv').config();
@@ -14,17 +11,10 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
+app.set('views', (__dirname + '/views'))
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(session({
-    secret: 'yoyo-honeysingh',
-    resave: false,
-    saveUninitialized: false,
-    name: 'reCaptcha',
-}))
-app.enable('trust proxy');
 
 
 //DB Config
@@ -33,7 +23,7 @@ const db = require('./config/keys').MongoURI;
 
 //Connect DB
 mongoose.connect(db, {useNewUrlParser: true,useUnifiedTopology: true})
-.then(() => console.log('db connected...'))
+.then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err))
 
 //Mail Config
@@ -75,88 +65,71 @@ app.get('/', (req,res)=>{
      
 });
 
-// app.post('/reCaptcha', (req,res)=>{
-//     if(
-//         req.body.captcha === undefined ||
-//         req.body.captcha === '' ||
-//         req.body.captcha === null
-//       ){
-//           res.json({
-//               body : {
-//                   'success': false,
-//               }
-//           });
-//       }
+// Firebase and Multer setup
+    var admin = require("firebase-admin");
 
-//       const secretKey = process.env.CAPTCHA_SECRET_KEY;
+    var serviceAccount = require('./creds.json');
 
-//       const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        storageBucket: 'gs://cybercongress-9b71a.appspot.com'
+    });
 
-//       request(verifyUrl, (err, response, body)=>{
-//         body = JSON.parse(body);
-//         if(body.success !== undefined && !body.success){
-//             res.json(body)
-//         }else{
-//             req.session.reCaptcha = true;
-//             res.json(body)
-//         }
+    // const firebaseConfig = {
+    //     apiKey: "AIzaSyCP1b1HBROs62kBDLObcs4YNJzVuEk_zag",
+    //     authDomain: "cybercongress-9b71a.firebaseapp.com",
+    //     projectId: "cybercongress-9b71a",
+    //     storageBucket: "cybercongress-9b71a.appspot.com",
+    //     messagingSenderId: "277282535896",
+    //     appId: "1:277282535896:web:fd9366fe394f32d453daad",
+    //     measurementId: "G-QZPTPD1DLC"
+    //   };
 
-//       })
-// });
+    const storage = admin.storage();
+    const bucket = storage.bucket();
 
-var upload = multer();
+    const storageMulter = multer.memoryStorage();
+    const uploadMulter = multer({ storage: storageMulter });
 
-app.post('/postReport', upload.array('files'), (req,res)=>{
+app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
     const reportType = req.body.reportType;
     var name = req.body.name;
     var typeOfUser = req.body.typeOfUser;
     var phone = req.body.phone;
     const message = req.body.message.trim();
-    var images = [];
     var secrecy = req.body.maintainSecrecy;
     // Getting form data
     var ip = req.ip;
 
-    var fileinfo = req.files;
-    if(fileinfo.length > 7){
+    var uploadedFiles = req.files;
+    var downloadURLs = [];
+
+    if(uploadedFiles.length > 7){
         res.render('error')
     }
     // If 8 files, show error page
 
-    function getImages(){
-        if(fileinfo.length != 0){
-                for(let i=0; i < fileinfo.length; i++){
-                    const buffer = Buffer.from(fileinfo[i].buffer);
-                    const base64String = buffer.toString('base64');
-            
-                    const config = {
-                        method: 'post',
-                        url: 'https://api.imgur.com/3/image',
-                        headers: { 
-                            'Authorization': `Client-ID ${process.env.CLIENT_ID}`, 
-                             Accept: 'application/json',
-                        },
-                        data : {'image':base64String},
-                        mimeType: 'multipart/form-data',
-                    };
-            
-                    axios(config)
-                    .then(function (response) {
-                        images.push(response.data.data.link);
-                        if (images.length === fileinfo.length) {
-                            allRequests()
-                          }
-                    })
-                    .catch(function (error) {
-                        console.log(error.response);
-                    });
-                }  
-        }else{
-            allRequests()
+    async function getImages(){
+        // Upload files to Firebase Storage and get download URLs
+        for (const file of uploadedFiles) {
+            const uniqueFileName = `${Date.now()}-${file.originalname}`;
+            const fileUpload = bucket.file(uniqueFileName);
+    
+            await fileUpload.save(file.buffer, {
+            contentType: file.mimetype
+            });
+    
+            const downloadUrl = await fileUpload.getSignedUrl({
+            action: 'read',
+            expires: '03-09-2035' // Optional expiration date
+            });
+    
+            downloadURLs.push(downloadUrl);
         }
+        allRequests();
     }
 
-    function allRequests(){
+    async function allRequests(){
         if(!name){
             name = "Anonymous"
         }
@@ -181,8 +154,8 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
     
         else{  
                 
-                if(images.length == 0){
-                    images = ["Not Provided"]
+                if(downloadURLs.length == 0){
+                    downloadURLs = ["Not Provided"]
                 }
         
                 newReport = new Report({
@@ -191,27 +164,27 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     'typeOfUser': typeOfUser,
                     'phone' : phone.toString(),
                     'message' : message,
-                    'images': images,
+                    'images': downloadURLs,
                     'secrecy': secrecy,
                     'ip': ip,
                 });
     
                 newReport.save()
-                .then((report)=>{
+                .then(()=>{
                     console.log('added to db');
                     }).catch(err=>{
                         console.log(err);
                     })
 
-                    var imagesString = images.join(', ');
+                    var imagesString = downloadURLs.join(', ');
+
+                    // const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
     
-                    const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
-    
-                    const encodedUrl = encodeURI(url);
+                    // const encodedUrl = encodeURI(url);
         
-                    axios.get(encodedUrl).then((response)=>{
-                        console.log(response.data);
-                    }).catch(err=> console.log(err))
+                    // axios.get(encodedUrl).then((response)=>{
+                    //     console.log(response.data);
+                    // }).catch(err=> console.log(err))
     
                     
                     var mailOptions = {
@@ -244,26 +217,19 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
                     })
     
                     if(phone != 'Anonymous'){
-                        const message = 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'
-                        axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message=${message}&route=v3&numbers=${phone.toString()}`)
-                        .then(response =>{
-                            if(response.data.return == true){
-                                console.log(`SMS sent to ${phone.toString()}`)
-                                res.render('submit')
-                            }
-                        }).catch(err => {
-                            console.log(err)
-                            res.render('submit')
-                        })
-                        // var options = {authorization : process.env.FAST_SMS_API_KEY ,sender_id : 'CYBERCONG', message : 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.' ,  numbers : [parseInt(phone.toString())]} 
-                        // fast2sms.sendMessage(options) 
-                        // .then(()=>{
-                        //     console.log('SMS sent')
-                        //     res.render('submit')
-                        // }).catch((err)=>{
+                        // const message = 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'
+                        // axios.get(`https://www.fast2sms.com/dev/bulkV2?authorization=${process.env.FAST_SMS_API_KEY}&sender_id=TXTIND&message=${message}&route=v3&numbers=${phone.toString()}`)
+                        // .then(response =>{
+                        //     if(response.data.return == true){
+                        //         console.log(`SMS sent to ${phone.toString()}`)
+                        //         res.render('submit')
+
+                        //     }
+                        // }).catch(err => {
                         //     console.log(err)
-                        //     res.render('error')
+                        //     res.render('submit')
                         // })
+                        res.render('submit')
                     }else{
                         res.render('submit')
                     }
@@ -274,11 +240,11 @@ app.post('/postReport', upload.array('files'), (req,res)=>{
 
 app.post('/newsletter', (req,res)=>{
     const email = req.body.email;
-            newNewsletter = new Newsletter({
+            const newNewsletter = new Newsletter({
                 "email": email
             });
             newNewsletter.save()
-            .then((newsletter)=>{
+            .then(()=>{
                 console.log('New SignUp');
                 axios.get(`${process.env.DOC_API}?email=${email}`).then(response => {
                     console.log('email added');
