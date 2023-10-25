@@ -1,6 +1,6 @@
 {
   "name": "cybercong",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A platform for cybercongress of ais-46",
   "main": "index.js",
   "scripts": {
