@@ -4,8 +4,9 @@
   "description": "A platform for cybercongress of ais-46",
   "main": "index.js",
   "scripts": {
-    "prebuild" : "node generate-creds.js",
+    "prebuild": "node generate-creds.js",
     "start": "node index.js",
+    "deploy": "vercel --prod",
     "dev": "nodemon index.js"
   },
   "author": "Vaibhav Sharma",
@@ -17,12 +18,10 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "firebase-admin": "^11.10.1",
-    "google-auth-library": "^9.0.0",
-    "google-spreadsheet": "^4.0.2",
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
     "nodemailer": "^6.5.0",
     "request": "^2.88.2",
-    "twilio": "^4.16.0"
+    "vercel": "^32.5.0"
   }
 }

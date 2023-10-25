@@ -11,5 +11,8 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "build": {
+        "command": "npm run prebuild"
+      }
 }
