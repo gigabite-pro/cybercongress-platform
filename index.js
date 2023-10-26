@@ -131,6 +131,8 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
         allRequests();
     }
 
+    const shortURLs = [];
+
     async function allRequests(){
         if(!name){
             name = "Anonymous"
@@ -155,7 +157,6 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
         }
     
         else{  
-                
                 if(downloadURLs.length == 0){
                     downloadURLs = ["Not Provided"]
                 }
@@ -176,16 +177,14 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
                     console.log('added to db');
                     }).catch(err=>{
                         console.log(err);
-                    })
-
-                    const shortURLs = [];
+                    });
 
                     for(link in downloadURLs){
                         axios.post(`https://api.tinyurl.com/create?api_token=${process.env.TINYURL_APIKEY}`, {
                             "url": downloadURLs[link][0],
                           }).then(response => {
                             console.log(response.data.data.tiny_url)
-                            shortURLs.push(`${response.data.data.tiny_url}`)
+                            shortURLs.push(response.data.data.tiny_url)
                             // if (shortURLs.length == downloadURLs.length){
                             //     sheetAndMail();
                             // }
@@ -201,7 +200,6 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
 
                     function sheetAndMail(){
                         var imagesString = shortURLs.join(', ');
-                    
 
                         const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
         
