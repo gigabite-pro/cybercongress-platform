@@ -186,14 +186,18 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
                           }).then(response => {
                             console.log(response.data.data.tiny_url)
                             shortURLs.push(`${response.data.data.tiny_url}`)
-                            if (shortURLs.length == downloadURLs.length){
-                                sheetAndMail();
-                            }
+                            // if (shortURLs.length == downloadURLs.length){
+                            //     sheetAndMail();
+                            // }
                         })
                           .catch(error => {
                             console.error('Error:', error);
                           });
                     }
+
+                    setTimeout(() => {
+                        sheetAndMail();
+                    }, 2000);
 
                     function sheetAndMail(){
                         var imagesString = shortURLs.join(', ');
