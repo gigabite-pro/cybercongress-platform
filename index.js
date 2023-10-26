@@ -110,6 +110,8 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
     // If 8 files, show error page
 
     async function getImages(){
+        const currentDate = new Date();
+        const expirationDate = new Date(currentDate);
         // Upload files to Firebase Storage and get download URLs
         for (const file of uploadedFiles) {
             const uniqueFileName = `${Date.now()}-${file.originalname}`;
@@ -121,7 +123,7 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
     
             const downloadUrl = await fileUpload.getSignedUrl({
             action: 'read',
-            expires: '03-09-2035' // Optional expiration date
+            expires: expirationDate.setFullYear(expirationDate.getFullYear() + 5)
             });
     
             downloadURLs.push(downloadUrl);
@@ -176,45 +178,65 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
                         console.log(err);
                     })
 
-                    var imagesString = downloadURLs.join(', ');
+                    const shortURLs = [];
 
-                    // const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
-    
-                    // const encodedUrl = encodeURI(url);
-        
-                    // axios.get(encodedUrl).then((response)=>{
-                    //     console.log(response.data);
-                    // }).catch(err=> console.log(err))
-    
+                    for(link in downloadURLs){
+                        axios.post(`https://api.tinyurl.com/create?api_token=${process.env.TINYURL_APIKEY}`, {
+                            "url": downloadURLs[link][0],
+                          }).then(response => {
+                            console.log(response.data.data.tiny_url)
+                            shortURLs.push(`${response.data.data.tiny_url}`)
+                            if (shortURLs.length == downloadURLs.length){
+                                sheetAndMail();
+                            }
+                        })
+                          .catch(error => {
+                            console.error('Error:', error);
+                          });
+                    }
+
+                    function sheetAndMail(){
+                        var imagesString = shortURLs.join(', ');
                     
-                    var mailOptions = {
-                        from: 'cybercongressaisg46@gmail.com',
-                        to: 'cybercongressaisg46@gmail.com',
-                        subject: `Report Type: ${reportType}`,
-                        html: `<p>
-                        <strong>User Type: </strong>${typeOfUser} 
-                        <br>
-                        <strong>Name: </strong>${name}
-                        <br>
-                        <strong>Phone Number: </strong>${phone.toString()}
-                        <br>
-                        <strong>Message: </strong>${message}
-                        <br>
-                        <strong>Images: </strong>${imagesString}
-                        <br>
-                        <strong>Maintain Secrecy: </strong>${secrecy}
-                        <br>
-                        <strong>IP Address: </strong>${ip}
-                    </p>`
-                    };
-    
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if (error) {
-                            console.log(error);
-                        } else {
-                            console.log('Email sent: ' + info.response);
-                        }
-                    })
+
+                        const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
+        
+                        const encodedUrl = encodeURI(url);
+            
+                        axios.get(encodedUrl).then((response)=>{
+                            console.log(response.data);
+                        }).catch(err=> console.log(err))
+        
+                        
+                        var mailOptions = {
+                            from: 'cybercongressaisg46@gmail.com',
+                            to: 'cybercongressaisg46@gmail.com',
+                            subject: `Report Type: ${reportType}`,
+                            html: `<p>
+                            <strong>User Type: </strong>${typeOfUser} 
+                            <br>
+                            <strong>Name: </strong>${name}
+                            <br>
+                            <strong>Phone Number: </strong>${phone.toString()}
+                            <br>
+                            <strong>Message: </strong>${message}
+                            <br>
+                            <strong>Images: </strong>${imagesString}
+                            <br>
+                            <strong>Maintain Secrecy: </strong>${secrecy}
+                            <br>
+                            <strong>IP Address: </strong>${ip}
+                        </p>`
+                        };
+        
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        })
+                    }
     
                     if(phone != 'Anonymous'){
                         // const message = 'Cyber Congress of AIS-46 has received your report. Kindly wait for us to get in touch with you.'
