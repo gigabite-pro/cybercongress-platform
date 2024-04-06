@@ -138,7 +138,9 @@
             <div class="row home-top justify-content-center">
               <div class="col-12 phone-illus">
                 <div class="illus-outer">
-                  <div class="illus-inner"></div>
+                  <div class="illus-inner">
+                    <img src="/assets/phone-illus.png" alt="" class="phone-inner">
+                  </div>
                 </div>
               </div>
               <div class="col-md-5 col-12 home-left-content">
@@ -154,10 +156,17 @@
                     propagate netiquette and ensure adherence to Amity’s cyber laws. In case you need any
                     help—professional or friendly—let us know.
                   </div>
-                  <div class="col-12 mt-4 more">
+                  <!-- <div class="col-12 mt-4 more">
                     <a href="#newsletter" id="more">
                       <button class="btn button">
                         Read our E-Magazine! &nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-down"></i>
+                      </button>
+                    </a>
+                  </div> -->
+                  <div class="col-12 mt-4 more">
+                    <a href="#about">
+                      <button class="btn button">
+                        About Us &nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-down"></i>
                       </button>
                     </a>
                   </div>
@@ -418,6 +427,13 @@
                   <br><br>
                   We have developed this platform to increase our approachability for the entire school—especially when
                   it is running online. In case you need to contact us, please use the Report section.
+                  <div class="col-12 mt-4 more">
+                    <a href="#report">
+                      <button class="btn button">
+                        Report &nbsp;&nbsp;&nbsp;<i class="fas fa-long-arrow-alt-down"></i>
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -469,7 +485,7 @@
                       </div>
                       <div class="mt-3">
                         <p class="labels">Phone Number *</p>
-                        <input type="number" name="phone" id="phone" class="form-control inputs"
+                        <input type="text" name="phone" id="phone" class="form-control inputs"
                           placeholder="Max 10 characters" maxlength="13" required autocomplete="off">
                       </div>
                       <div class="mt-3">
@@ -510,6 +526,7 @@
                     </form>
                     <div class="illus-outer reveal">
                       <div class="report-inner-1">
+                        Reveal Your Identity
                       </div>
                     </div>
                   </div>
@@ -557,6 +574,7 @@
                     </form>
                     <div class="illus-outer anonymous">
                       <div class="report-inner-2">
+                        Remain Anonymous
                       </div>
                     </div>
                   </div>
@@ -564,7 +582,7 @@
               </div>
             </div>
           </div>
-          <div id="newsletter" class="sections">
+          <!-- <div id="newsletter" class="sections">
             <div class="row justify-content-center">
               <div class='col-md-10'>
                 <div class="newsletter-flexed">
@@ -599,7 +617,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- </div> -->
           <!-- Instagram -->
           <%if (images || links) { %>
@@ -673,102 +691,39 @@
                 <!-- Students -->
                 <h3 class="head underlined students-head"> Students </h3>
                 <div class="row">
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Anirudh Chaturvedi </h5>
-                        <p class="card-text"> President </p>
+                  <% for( let i = 0; i < members.members.length; i++ ) { %>
+                    <div class="col-12 col-md-3 mt-md-3 mt-3">
+                      <div class="responsive-card card">
+                        <div class='card-body'>
+                          <h5 class="card-title"><%= members.members[i].name %></h5>
+                          <p class="card-text"> <%= members.members[i].post %> </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Jia Kapoor </h5>
-                        <p class="card-text"> Vice President </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Aayush Garg </h5>
-                        <p class="card-text"> Cyber Captain </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Pranjli Aggarwal </h5>
-                        <p class="card-text"> Cyber Captain </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-3 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Utkarsh Dugar </h5>
-                        <p class="card-text"> TS President </p>
-                      </div>
-                    </div>
-                  </div>
+                  <% } %>
                 </div>
                 <br>  
-                <!-- Teachers -->
-                <h3 class="head underlined teacher-head"> Teachers </h3>
-                <div class="row">
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Gurminder Kaur </h5>
-                        <p class="card-text">
-                          Head of Department
-                        </p>
-                        <p class="card-text ph">
-                          +91 93501 93687
-                        </p>
+                <div>
+                  
+                  <!-- Teachers -->
+                  <h3 class="head underlined teacher-head"> Teachers </h3>
+                  <div class="row">
+                    <% for( let i = 0; i < teachers.teachers.length; i++ ) { %>
+                      
+                    <div class="col-12 col-md-3 mt-md-0 mt-3">
+                      <div class="card">
+                        <div class='card-body'>
+                          <h5 class="card-title"> <%= teachers.teachers[i].name %> </h5>
+                          <p class="card-text">
+                            <%= teachers.teachers[i].post %>
+                          </p>
+                          <p class="card-text ph">
+                            <%= teachers.teachers[i].phone %>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Manisha Sharma </h5>
-                        <p class="card-text">
-                          Teacher Incharge 
-                        </p>
-                        <p class="card-text ph">
-                          +91 98688 51136
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Mukta Bimbrahw </h5>
-                        <p class="card-text">
-                          Teacher Incharge
-                        </p>
-                        <p class="card-text ph">
-                          +91 97119 03344
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Sunita Tokas </h5>
-                        <p class="card-text">
-                          Teacher Incharge
-                        </p>
-                        <p class="card-text ph">
-                          +91 99114 34555
-                        </p>
-                      </div>
-                    </div>
+                    <% } %>
                   </div>
                 </div>
               </div>
@@ -778,7 +733,7 @@
           <div id="alumni" class="sections">
             <div class="row justify-content-center" id="alumni2">
               <div class="col-10">
-                <div class="qute team-content  mb-5">
+                <div class="qute team-content  mb-5 mt-100">
                   Our alumni have been extremely active in the field of technology and are currently studying STEM at
                   renowned universities from all across the globe. Here are the people who established the cyber
                   congress
@@ -787,134 +742,22 @@
                 <!-- Students -->
                 <h3 class="head underlined alumni-head"> Alumni </h3>
                 <br>
-                <div class="row">
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Rachit Gupta</h5>
-                        <p class="card-text"> Student at Georgia Tech <br>
-                          <p class="text-muted"> 2021-22</p>
-                        </p>
+                <% for( let i = 0; i < alumni.alumni.length; i++ ) { %>
+                  <h4><%= alumni.alumni[i].year %></h4>
+                  <div class="row">
+                  <% for( let j = 0; j < alumni.alumni[i].alumni.length; j++ ) { %>
+                      <div class="col-10 col-md-3 mt-md-3 mt-3">
+                        <div class="card responsive-card">
+                          <div class='card-body'>
+                            <h5 class="card-title"><%=  alumni.alumni[i].alumni[j].name %></h5>
+                            <p class="card-text"><%=  alumni.alumni[i].alumni[j].status ? alumni.alumni[i].alumni[j].status : "Outgoing Batch" %><br>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    <% } %>
                   </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Vaibhav Sharma</h5>
-                        <p class="card-text"> Studen  t at UBC, Vancouver <br>
-                          <p class="text-muted"> 2021-22</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Aarushi Singh</h5>
-                        <p class="card-text"> Outgoing Batch <br>
-                          <p class="text-muted"> 2021-22</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Advika Asthana</h5>
-                        <p class="card-text"> Student at JMC <br>
-                          <p class="text-muted"> 2021-22</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Laxya Pahuja</h5>
-                        <p class="card-text"> Student at MIT, Manipal <br>
-                          <p class="text-muted"> 2020-21</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Ribhav Sharma </h5>
-                        <p class="card-text"> Student at UBC, Okanagan<br>
-                          <p class="text-muted">2020-21</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Anurag Parida </h5>
-                        <p class="card-text"> Gap Year Student <br>
-                          <p class="text-muted"> 2019-20</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Sarthak Singhal </h5>
-                        <p class="card-text"> Student at HKUST <br>
-                          <p class="text-muted">2019-20 </p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Padam Chopra </h5>
-                        <p class="card-text"> Student at UWaterloo <br>
-                          <p class="text-muted"> 2018-19 </p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Aryaman Agarwal </h5>
-                        <p class="card-text"> Student at UMass Amherst <br>
-                          <p class="text-muted">2018-19</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Ashwin Tewary </h5>
-                        <p class="card-text"> Student at USydney <br>
-                          <p class="text-muted">2017-18</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-3 mt-md-0 mt-3">
-                    <div class="card responsive-card">
-                      <div class='card-body'>
-                        <h5 class="card-title"> Gursimran Singh </h5>
-                        <p class="card-text"> Student at Georgia Tech <br>
-                          <p class="text-muted">2017-18</p>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </div>
+                  <br>
+                <% } %>
               </div>
             </div>
           </div>

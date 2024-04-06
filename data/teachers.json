@@ -1,0 +1,24 @@
+{
+    "teachers":[
+        {
+            "name":"Gurminder Kaur",
+            "post":"Head of Department",
+            "phone":"+91 93501 93687"
+        },
+        {
+            "name":"Manisha Sharma",
+            "post":"Teacher Incharge",
+            "phone":"+91 98688 51136"
+        },
+        {
+            "name":"Mukta Bimbrahw",
+            "post":"Teacher Incharge",
+            "phone":"+91 97119 03344"
+        },
+        {
+            "name":"Sunita Tokas",
+            "post":"Teacher Incharge",
+            "phone":"+91 99114 34555"
+        }
+    ]
+}

@@ -187,6 +187,10 @@ input[type=number] {
     color: white;
 }
 
+.phone-inner {
+    width: 13rem;
+}
+
 .illus-outer{
     width: 15rem;
     height: 15rem;
@@ -194,6 +198,10 @@ input[type=number] {
     border-radius: 14px;
     transition-duration: 0.5s;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    text-align: center;
+    font-family: 'ShameimaruSans_copy';
+    font-weight: 900;
+    font-size: 1.6rem;
 }
 
 .illus-outer:hover{
@@ -282,6 +290,9 @@ input[type=number] {
     background-size: contain;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .report-inner-2{
@@ -292,6 +303,9 @@ input[type=number] {
     background-size: contain;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .report-inner-content{
@@ -300,7 +314,10 @@ input[type=number] {
 }
 
 .laptop-or{
-    display: none;
+    /* display: none; */
+    width: 1rem;
+    margin-right: 4.5rem;
+    margin-top: 5rem;
 }
 
 .or{
@@ -320,6 +337,8 @@ input[type=number] {
 
 .form-reveal{
     display: none;
+    margin-left: -3.1rem;
+    margin-right: 4.5rem;
 }
 
 .anonymous{
@@ -490,7 +509,7 @@ small{
 
 /* Alumni */
 #alumni{
-    height: 100vh;
+    height: 150vh;
     margin-top: 10rem;
     margin-bottom: 2rem;
     display: flex;
@@ -498,12 +517,16 @@ small{
     align-items: center;
 }
 
+h4{
+    font-family: 'Geomanist-Book';
+}
+
 .alumni-head{
     margin-bottom: 0.5rem;
 }
 
 .responsive-card{
-    height: 8.3rem;
+    height: 6.3rem;
 }
 
 #insta{
@@ -766,6 +789,9 @@ a{
 
     .laptop-or{
         display: block;
+        justify-content: center;
+        margin-right: 0;
+        margin-top: 0;
     }
 
     .or{
@@ -775,6 +801,11 @@ a{
 
     .report-outer{
         padding-left: 1rem;
+    }
+
+    .form-reveal {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     #newsletter{

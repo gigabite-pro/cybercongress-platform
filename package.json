@@ -21,6 +21,8 @@
     "mongoose": "^5.12.3",
     "multer": "^1.4.2",
     "nodemailer": "^6.5.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^3.1.0",
     "request": "^2.88.2",
     "vercel": "^32.5.0"
   }

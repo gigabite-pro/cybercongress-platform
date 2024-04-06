@@ -1,0 +1,111 @@
+{
+    "alumni": [
+        {
+            "year": "2023-24",
+            "alumni": [
+                {
+                    "name":"Anirudh Chaturvedi",
+                    "status":""
+                },
+                {
+                    "name":"Jia Kapoor",
+                    "status":""
+                },
+                {
+                    "name":"Aayush Garg",
+                    "status":""
+                },
+                {
+                    "name":"Pranjli Aggarwal",
+                    "status":""
+                },
+                {
+                    "name":"Utkarsh Dugar",
+                    "status":""
+                }
+            ]
+        },
+        {
+            "year": "2022-23",
+            "alumni": [
+                {
+                    "name":"Aayan Agarwal",
+                    "status":""
+                }
+            ]
+        },
+        {
+            "year": "2021-22",
+            "alumni": [
+                {
+                    "name":"Rachit Gupta",
+                    "status":"Student at Georgia Tech"
+                },
+                {
+                    "name":"Vaibhav Sharma",
+                    "status":"Student at UBC Vancouver"
+                },
+                {
+                    "name":"Aarushi Singh",
+                    "status":""
+                },
+                {
+                    "name":"Advika Asthana",
+                    "status":"Student at JMC"
+                }
+            ]
+        },
+        {
+            "year": "2020-21",
+            "alumni": [
+                {
+                    "name":"Laxya Pahuja",
+                    "status":"Student at MIT, Manipal"
+                },
+                {
+                    "name":"Ribhav Sharma",
+                    "status":"Student at UBC, Okanagan"
+                }
+            ]
+        },
+        {
+            "year": "2019-20",
+            "alumni": [
+                {
+                    "name":"Anurag Parida",
+                    "status":"Gap Year Student"
+                },
+                {
+                    "name":"Sarthak Singhal",
+                    "status":"Student at HKUST"
+                }
+            ]
+        },
+        {
+            "year": "2018-19",
+            "alumni": [
+                {
+                    "name":"Padam Chopra",
+                    "status":"Student at UWaterloo"
+                },
+                {
+                    "name":"Aryaman Agarwal",
+                    "status":"Student at UMass Amherst"
+                }
+            ]
+        },
+        {
+            "year": "2017-18",
+            "alumni": [
+                {
+                    "name":"Ashwin Tewary",
+                    "status":"Student at USydney"
+                },
+                {
+                    "name":"Gursimran Singh",
+                    "status":"Student at Georgia Tech"
+                }
+            ]
+        }
+    ]
+}

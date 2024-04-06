@@ -2,13 +2,19 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const nodemailer = require('nodemailer');
+
 const multer = require('multer');
 const mongoose = require('mongoose');
+// const path = require("path")
+// const fs = require("fs")
+
 const Report = require('./models/report');
 const Newsletter = require('./models/newsletter');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
+const scriptURL = process.env.SCRIPT_URL
+const emailID = process.env.EMAIL
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
@@ -29,14 +35,21 @@ mongoose.connect(db, {useNewUrlParser: true,useUnifiedTopology: true})
 //Mail Config
 var transporter = nodemailer.createTransport({
     service: 'gmail',
+    host:"smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
-      user: 'cybercongressaisg46@gmail.com',
-      pass: `${process.env.EMAIL_PASS}`
+        user: `${process.env.EMAIL}`,
+        pass: `${process.env.EMAIL_PASS}`
     }
-  });
-  
+});
+
+
 
 app.get('/', (req,res)=>{
+    const members = require("./data/members.json")
+    const teachers = require("./data/teachers.json")
+    const alumni = require("./data/alumni.json")
     const images = []
     const links = []
     axios.get(`https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`)
@@ -53,13 +66,15 @@ app.get('/', (req,res)=>{
         }
         res.render('home', {
             images : images,
-            links : links
+            links : links,
+            members, teachers, alumni
         });
     })
     .catch(err => {
         res.render('home',{
             images: null,
             links: null,
+            members, teachers, alumni
         })
     });
      
@@ -200,8 +215,7 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
 
                     function sheetAndMail(){
                         var imagesString = shortURLs.join(', ');
-
-                        const url = `${process.env.SCRIPT_URL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
+                        const url = `${scriptURL}/?rt=${reportType}&name=${name}&ut=${typeOfUser}&ph=${phone.toString()}&msg=${message}&img=${imagesString}&sec=${secrecy}&auth=${process.env.AUTH_TOKEN}`
         
                         const encodedUrl = encodeURI(url);
             
@@ -211,8 +225,8 @@ app.post('/postReport', uploadMulter.array('files', 7), (req,res)=>{
         
                         
                         var mailOptions = {
-                            from: 'cybercongressaisg46@gmail.com',
-                            to: 'cybercongressaisg46@gmail.com',
+                            from: `${emailID}`,
+                            to: `${emailID}`,
                             subject: `Report Type: ${reportType}`,
                             html: `<p>
                             <strong>User Type: </strong>${typeOfUser} 
