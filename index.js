@@ -14,7 +14,7 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 const scriptURL = process.env.SCRIPT_URL
-const emailID = process.env.EMAIL
+const emailID = "cybercongressaisg46@gmail.com"
 
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'));
@@ -39,7 +39,7 @@ var transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: `${process.env.EMAIL}`,
+        user: "cybercongressaisg46@gmail.com",
         pass: `${process.env.EMAIL_PASS}`
     }
 });
